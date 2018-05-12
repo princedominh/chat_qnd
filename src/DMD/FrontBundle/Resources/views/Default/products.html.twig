@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+
+        <link rel="stylesheet" href="{{ asset('/bundles/dmdfront/css/custom.css') }}" rel="stylesheet" type="text/css" >
+    {% endblock stylesheets %}
+
+    {% block body %}
+
+        <section>
+            {% block container %}
+                <div class="row-fluid">
+                    <div class="span12">
+<!-- MAIN CONTENT AREA: REDESIGN CUSTOM - HERO BLOCK 1 (TEXT BLOCK)] -->
+                        <div class="span6 home-block hero-block-1">
+                            <img src="{{ asset('/images/Website-Under-Construction.jpg') }}" />
+                        </div>
+                        <div class="span6 home-block hero-block-1">
+                            <h1>{{ 'Welcome DoHoang Solution!' | trans({}, 'DMDFrontBundle') }}</h1>
+                            <h2>{{ 'Simple, Strong and Smart' | trans({}, 'DMDFrontBundle') }}</h2>
+                            <p>{{ 'Say hello Dohoang.net' | trans({}, 'DMDFrontBundle') }}</p>
+                        </div>
+<!-- MAIN CONTENT AREA: SPACER BETWEEN HERO BLOCK 1 AND HEREO BLOCK 2 -->
+                        <div class="span1">
+                        </div>
+<!-- MAIN CONTENT AREA: bizstrap CUSTOM - HERO BLOCK 2 -->
+                        <div class="span5 home-block">
+                            <div class="grey-box hero-block-2">
+                                <h2><a href="#">{{ 'Upgarade to Professional Account' | trans({}, 'DMDFrontBundle')}}</a></h2>
+                                <p>
+                                    <img src="{{ asset('/bundles/dmdfront/images/release_icon.png') }}" alt="" />
+                                    {{ 'Professional Account' | trans({}, 'DMDFrontBundle')}}
+                                </p>
+                                <ul>
+                                    <li><p>{{ 'Professional Account description1' | trans({}, 'DMDFrontBundle')}}</p></li>
+                                    <li><p>{{ 'Professional Account description2' | trans({}, 'DMDFrontBundle')}}</p></li>
+                                    <li><p>{{ 'Professional Account description3' | trans({}, 'DMDFrontBundle')}}</p></li>
+                                </ul>
+                                <a class="btn btn-warning" href="#"><i class="icon-shopping-cart"></i>{{ 'Upgarade to Professional Account Now' | trans({}, 'DMDFrontBundle')}}</a>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                
+                
+            {% endblock container %}
+        </section>
+    {% endblock body %}

@@ -1,0 +1,88 @@
+action_delete: "Xóa"
+action_edit: "Sửa"
+action_show: "Xem"
+Admin: "Quản lý"
+all_elements: "Tất cả"
+
+btn_advanced_filters: "Lọc nâng cao"
+btn_batch: "Thực hiện"
+btn_create: "Thêm"
+btn_create_and_create_a_new_one: "Thêm và Thêm khác"
+btn_create_and_edit_again: "Thêm và Sửa"
+btn_create_and_return_to_list: "Thêm và Trở lại danh sách"
+btn_delete: "Xóa"
+btn_filter: "Lọc"
+btn_update_and_edit_again: "Cập nhật và Sửa"
+btn_update_and_return_to_list: "Cập nhật và Trở lại danh sách"
+
+Coffee: "Cà phê"
+confirm_exit: "Xác nhận"
+
+Dashboard: "Bảng điều khiển"
+delete_or: "hoặc"
+
+export_format_json: "Xuất JSON"
+export_format_xml: "Xuất XML"
+export_format_csv: "Xuất CSV"
+export_format_xls: "Xuất XLS"
+
+flash_create_success: "Thêm thành công"
+flash_delete_success: "Xóa thành công"
+flash_edit_success: "Sửa thành công"
+
+Inventory: "Kho"
+
+label_export_download: "Xuất danh sách"
+label_filters: "Lọc"
+label_per_page: "Số lượng một trang"
+label_type_contains:    "Chứa"
+label_type_equals:    "Bằng"
+label_type_no: "Không"
+label_type_not_contains:    "Không chứa"
+label_type_not_equals:    "Không bằng"
+label_type_yes: "Có"
+label_type_equal: "Bằng"
+label_type_greater_equal: "Lớn hơn hoặc bằng"
+label_type_greater_than: "Lớn hơn"
+label_type_less_equal: "Nhỏ hơn hoặc bằng"
+label_type_less_than: "Nhỏ hơn"
+
+link_add: "Thêm"
+link_actions: "Hành động"
+link_action_create: "Thêm mới"
+link_action_edit: "Sửa"
+link_action_list: "Danh sách"
+link_action_acl: "Danh sách điều khiển truy cập"
+link_action_show: "Xem"
+link_delete: "Xóa"
+link_edit_acl: "Chỉnh sửa danh sách điều khiển truy cập"
+link_filters: "Lọc"
+link_list: "Xem danh sách"
+link_reset_filter: "Hủy lọc"
+
+list_select: "Chọn"
+list_results_count: "Số lượng"
+
+"Material": "Nguyên liệu"
+message_delete_confirmation: "Bạn có chắc chắn xóa?"
+
+News: "Thông tin mới"
+
+no_result: "Không có đối tượng"
+noscript_warning: "Không có script"
+
+search_placeholder: "Tìm kiếm"
+
+title_create: "Thêm mới"
+title_dashboard: "Quản trị"
+title_delete: "Xóa"
+title_edit: "Sửa"
+users: "Người dùng"
+Users: "Người dùng"
+
+Product: "Sản phẩm"
+category_select: "Chọn danh mục"
+
+breadcrumb:
+    link_dashboard: "Bảng điều khiển"
+

@@ -1,0 +1,143 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container main-content">
+    <div class="progress progress-striped active" id="table-load">
+        <div class="bar" style="width: 0%;"></div>
+        Đang tải dữ liệu bàn ...
+    </div>
+    <div class="row-fluid">
+        <div class="span6 primary-column">
+        {% for area in areas %}
+                <h3 class="short_headline"><span>{{ area.name }}</span></h3>
+            {% for table in area.tables %}
+                <div class="table-short span2">
+                    <a class="btn {% if not table.finished %}btn-danger{% endif %}" 
+                       href="#table-alias-{{table.alias}}"> {{ table.name }} </a>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <section class="span6 sidebar secondary-column">
+            <div id="right-panel">
+            {% for area in areas %}
+                {% for table in area.tables %}
+                    <div id="h-table-{{table.alias}}" class="h-table h-table-hide">
+                        {% if table.CurrentOrder is defined %}
+                            {% include 'DMDCoffeeBundle:Default:table.html.twig' with {'order': table.CurrentOrder} %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<div id="coffee-modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="modal-header-title">Tiêu đề</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+    <a class="btn btn-primary" id="modal-save">Save changes</a>
+  </div>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script type="text/javascript">
+    var current_table_alias = window.location.hash.replace("#", "").substring(12);//table-alias
+    {% if items is defined %}
+    var items = {
+        {% for item in items %}
+            'item{{ item.id }}' : { 'name': '{{ item.name }}', 
+                'unit': '{{ item.unit }}',
+                'price': {{ item.currentPrice }}
+            },
+        {% endfor %}
+            'item0' : {'name':'','unit':'','price':''}
+        };
+    {% endif %}
+
+    $(function() {
+        
+        //load table information on right panel
+        $("a[href^='#table-alias-']").click(function() {
+            table_alias = $(this).attr("href").substring(13);//#table-alias
+            if(current_table_alias != '') {
+                $("div#h-table-"+current_table_alias).addClass('h-table-hide');
+            }
+            current_table_alias = table_alias;
+            $("div#h-table-"+current_table_alias).removeClass('h-table-hide')
+        });
+        
+        $("div#h-table-"+current_table_alias).removeClass('h-table-hide');
+    });
+    
+    function print(order_id)
+    {
+        mode = "iframe";//iframe or popup
+        close = true;
+        
+        var options = { mode : mode, popClose : close};
+        
+        $(".info-print").show();
+        
+        $("#printorder"+order_id).printArea(options);
+        
+        $.ajax({url:"{{ url('dmd_coffee_table_orderprinted_save') }}",
+                type: "POST",
+                data: {'order_id': order_id, 'order_content': $("#printorder"+order_id+" table").html() },
+                success:function(result){
+                    
+            }});
+        
+        $(".info-print").hide();
+    }
+
+    function adddescription(order_id, table_name)
+    {
+        var options = {};
+        $("#coffee-modal #modal-header-title").html('Mô tả cho '+ table_name);
+        $("#coffee-modal .modal-body").html('<img src="{{ asset('/assets/images/loading.gif') }}" />');
+        $.ajax({url:"{{ url('dmd_coffee_table_orderdescription_add') }}",
+                type: "POST",
+                data: {'order_id': order_id },
+                success:function(result){
+                    $("#coffee-modal .modal-body").html(result);
+            }});
+        $("#coffee-modal #modal-save").click(function(){
+            $.ajax({url:"{{ url('dmd_coffee_table_orderdescription_save') }}",
+                type: "POST",
+                data: $("form[name='orderDescription']").serialize(),
+                success:function(result){
+                    if(result=='ok') {
+                        $("#coffee-modal").modal('hide');
+                        $("#description"+order_id).html($("form[name='orderDescription'] #order_description").val());;
+                    } else {
+                        $("#coffee-modal .modal-body").html($("#coffee-modal .modal-body").html() + '<div>Error</div>');
+                    }
+            }});
+        });
+        $("#coffee-modal").modal(options);
+    }
+
+    function saveOrder(order_id, table_alias)
+    {
+        $.ajax({url:"{{ url('dmd_coffee_table_order_save') }}",
+                type: "POST",
+                data: { 'order_id': order_id },
+                success:function(result){
+                    $("#h-table-"+table_alias).html(result);
+                    $("a[href='#table-alias-"+table_alias+"']").removeClass('btn-danger');
+            }});
+    }
+
+</script>
+<script charset="utf-8" type="text/javascript" src='{{ asset('/js/jquery.PrintArea.js') }}'></script> 
+{% endblock script %}

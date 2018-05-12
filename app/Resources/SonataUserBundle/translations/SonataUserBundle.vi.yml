@@ -1,0 +1,74 @@
+forgotten_password: "Quên mật khẩu"
+
+gender_unknown: "Khác"
+gender_male: "Nam"
+gender_female: "Nữ"
+groups: "Nhóm"
+
+sonata_user: "Quản lý Tài khoản"
+
+title_user_authentication: "Đăng nhập"
+
+user_block_logout: "Thoát"
+user_block_profile: "Tài khoản"
+users: "Tài khoản"
+
+
+breadcrumb:
+    link_user_list: "Danh sách người dùng"
+    link_group_list: "Danh sách nhóm"
+
+field:
+    label_roles_editable: "Các quyền có thể thay đổi"
+
+filter:
+    label_id: "Id"
+    label_username: "Tên tài khoản"
+    label_locked: "Đang khóa"
+    label_email: "Email"
+    label_groups: "Nhóm"
+    label_name: "Tên"
+  
+form:
+    label_username: "Tên tài khoản"
+    label_email: "Email"
+    label_plain_password: "Mật khẩu"
+    label_groups: "Nhóm"
+    label_enabled: "Đang sử dụng"
+    label_locked: "Đang khóa"
+    label_created_at: "Ngày tạo"
+    label_impersonating: "Đại diện"
+    label_date_of_birth: "Ngày sinh"
+    label_firstname: "Tên"
+    label_lastname: "Họ, đệm"
+    label_website: "Website"
+    label_biography: "Tiểu sử"
+    label_gender: "Giới tính"
+    label_phone: "Điện thoại"
+    label_locale: "Quốc gia"
+    label_timezone: "Múi giờ"
+    label_facebook_uid: "Facebook Id"
+    label_facebook_name: "Tên Facebook"
+    label_twitter_uid: "Twitterr Id"
+    label_twitter_name: "Twitter name"
+    label_: "Email"
+    label_name: "Tên"
+    label_roles: "Nhóm"
+    label_faculty: "Đơn vị"
+    label_qtu_type: "Kiểu người dùng"
+
+list:
+    label_username: "Tên tài khoản"
+    label_email: "Email"
+    label_groups: "Nhóm"
+    label_enabled: "Đang sử dụng"
+    label_locked: "Đang khóa"
+    label_created_at: "Ngày tạo"
+    label_impersonating: "Đại diện"
+    label_name: "Tên"
+    label_roles: "Nhóm"
+
+security:
+    login:
+        username: "Tài khoản"
+        password: "Mật khẩu"

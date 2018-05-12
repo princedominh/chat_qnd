@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Định lượng{% endblock title %}
+{% block stylesheets %}
+    <link type="text/css" href="{{ asset('bundles/dmdcoffee/css/style.css') }}" rel="stylesheet">
+{#    <link type="text/css" media="print" href="{{ asset('bundles/dmdcoffee/css/print.css') }}" rel="stylesheet">#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datetimepicker.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container main-content">
+        {% include 'DMDCoffeeBundle:Default:menu.html.twig' %}
+        <div class="row">
+            <div class="col-md-8 primary-column">
+                <h1>Trang định lượng</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% for category in categories%}
+                <h3 class="short_headline"><span>{{ category.name }}</span></h3>
+                    {% for item in category.items %}
+                        <div class="table-short">
+                            <a class="btn item-coffee" 
+                               href="#item-alias-{{item.alias}}"> {{ item.name }} </a>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <section class="col-md-6">
+                <div id="right-panel">
+                {% for category in categories%}
+                    {% for item in category.items %}
+                        <div id="h-item-{{item.alias}}" class="h-table h-table-hide">
+                            {% include 'DMDCoffeeBundle:Analysis:item.html.twig' with {'item': item} %}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    {% include 'DMDCoffeeBundle:Default:footer.html.twig' %}
+{% endblock body %}
+
+{% block javascripts %}
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/jquery.PrintArea.js') }}'></script> 
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/moment.js') }}'></script> 
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/plugins/bootstrap-datetimepicker.js') }}'></script> 
+
+    <script type="text/javascript">
+        var current_item_alias = window.location.hash.replace("#", "").substring(11);//table-alias
+{#        console.log(current_item_alias);#}
+        $(function () {
+            $("a[href^='#item-alias-']").click(function() {
+                item_alias = $(this).attr("href").substring(12); console.log(item_alias);
+                if(current_item_alias != '') {
+                    $("div#h-item-"+current_item_alias).addClass('h-table-hide');
+                }
+                current_item_alias = item_alias;
+                $("div#h-item-"+current_item_alias).removeClass('h-table-hide')
+            });
+            $("div#h-item-"+current_item_alias).removeClass('h-table-hide');
+        });
+        
+        function updatePrice(item_id, newcost){
+            $.ajax({url:"{{ url('dmd_coffee_updatecost') }}",
+                type: "POST",
+                data: {'item_id':item_id, 'newcost': newcost},
+                success:function(result){
+                    if(result=='ok') {
+                        location.reload();
+                    }
+            }});
+        }
+    </script>
+    {#<script charset="utf-8" type="text/javascript" src='{{ asset('/js/bootstrap-datetimepicker.min.js') }}'></script> #}
+{% endblock javascripts %}

@@ -1,0 +1,196 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Thống kê bán hàng{% endblock title %}
+{% block stylesheets %}
+    <link type="text/css" href="{{ asset('bundles/dmdcoffee/css/style.css') }}" rel="stylesheet">
+    <link type="text/css" media="print" href="{{ asset('bundles/dmdcoffee/css/print.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-datetimepicker.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container main-content">
+        {% include 'DMDCoffeeBundle:Default:menu.html.twig' %}
+        <div class="row">
+            <div class="col-md-8 primary-column">
+                <h1>Trang thống kê</h1>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="col-md-12 primary-column">
+                <form name="filter-date" method="get" action="{{ path('dmd_coffee_analysis') }}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="select_date" for="from_date" >Thời gian bắt đầu:</label>
+                            <div class="form-group">
+                                <div id="datetimepicker-from-date" class="input-group date">
+                                    <input id="from_date" class="form-control" name="from_date" /> 
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="select_date" for="to_date" >Thời gian kết thúc:</label>
+                            <div id="datetimepicker-to-date" class="input-group date">
+                                <input id="to_date" class="form-control" name="to_date" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Lọc" />
+                    <a class="btn" href="{{ url('dmd_coffee_analysis') }}">Mặc định</a>
+                </form>
+
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#table-analysis" aria-controls="table-analysis" role="tab" data-toggle="tab">Theo bàn</a></li>
+                        <li role="presentation"><a href="#item-analysis" aria-controls="item-analysis" role="tab" data-toggle="tab">Theo món</a></li>
+                        <li role="presentation"><a href="#inventory-receiving-analysis" aria-controls="inventory-receiving-analysis" role="tab" data-toggle="tab">Nhập hàng</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- Tab table-analysis content -->
+                        <div role="tabpanel" class="tab-pane active" id="table-analysis">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Thời gian</th>
+                                    <th>Bàn</th>
+                                    <th>Thanh toán</th>
+                                    <th>Mô tả</th>
+                                </tr>
+                                {% set allTotal = 0 %}
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.createdAt | date('d-m-Y H:i') }}</td>
+                                        <td>{{ order.table.name }}</td>                    
+                                        <td style="text-align: right">{{ order.total|number_format(0, ',', '.') }}</td>                    
+                                        <td>
+                                            {{ order.description | raw }}
+                                            {% if not order.finished %}
+                                                <span class="label label-warning">Chưa hoàn thành</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% set allTotal = allTotal + order.total %}
+                                {% endfor %}
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="text-align: right">{{ allTotal |number_format(0, ',', '.')}}</th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Tab item-analysis content -->
+                        <div role="tabpanel" class="tab-pane" id="item-analysis">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Món</th>
+                                    <th style="text-align: right;">Số Lượng</th>
+                                    <th style="text-align: right;">Đơn giá</th>
+                                    <th style="text-align: right;">Thành tiền</th>
+                                    <th style="text-align: right;">Đơn giá gốc</th>
+                                    <th style="text-align: right;">Thành tiền gốc</th>
+                                    <th style="text-align: right;">Lãi</th>
+                                </tr>
+                                {% set sellTotal = 0 %}
+                                {% set costTotal = 0 %}
+                                {% for i_q in all_quantity %}
+                                    <tr>
+                                        <td>{{ i_q.name }}</td>
+                                        <td style="text-align: right;">{{ i_q.quantity | number_format(0, ',', '.')}}</td>
+                                        <td style="text-align: right;">{{ i_q.current_price | number_format(0, ',', '.') }}</td>
+                                        <td style="text-align: right;">{{ (i_q.quantity * i_q.current_price) | number_format(0, ',', '.') }}</td>
+                                        <td style="text-align: right;">{{ i_q.current_cost | number_format(0, ',', '.') }}</td>
+                                        <td style="text-align: right;">{{ (i_q.quantity * i_q.current_cost) | number_format(0, ',', '.') }}</td>
+                                        <td style="text-align: right;">{{ (i_q.quantity * (i_q.current_price - i_q.current_cost)) | number_format(0, ',', '.') }}</td>
+                                    </tr>
+                                    {% set sellTotal = sellTotal + (i_q.quantity * i_q.current_price) %}
+                                    {% set costTotal = costTotal + (i_q.quantity * i_q.current_cost) %}
+                                {% endfor %}
+                                <tr>
+                                    <th></th>
+                                    <th style="text-align: right;">Tổng số</th>
+                                    <th style="text-align: right;">&nbsp;</th>
+                                    <th style="text-align: right;">{{ sellTotal | number_format(0, ',', '.') }}</th>
+                                    <th style="text-align: right;"></th>
+                                    <th style="text-align: right;">Tổng giá gốc: {{ costTotal | number_format(0, ',', '.') }}</th>
+                                    <th style="text-align: right;">Tổng lãi: {{ (sellTotal - costTotal) | number_format(0, ',', '.') }}</th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Tab table-analysis content -->
+                        <div role="tabpanel" class="tab-pane" id="inventory-receiving-analysis">
+                            {#<table class="table table-hover">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Thời gian</th>
+                                    <th>Bàn</th>
+                                    <th>Thanh toán</th>
+                                    <th>Mô tả</th>
+                                </tr>
+                                {% set allTotal = 0 %}
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.createdAt | date('d-m-Y H:i') }}</td>
+                                        <td>{{ order.table.name }}</td>                    
+                                        <td style="text-align: right">{{ order.total|number_format(0, ',', '.') }}</td>                    
+                                        <td>
+                                            {{ order.description }}
+                                            {% if not order.finished %}
+                                                <span class="label label-warning">Chưa hoàn thành</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% set allTotal = allTotal + order.total %}
+                                {% endfor %}
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="text-align: right">{{ allTotal |number_format(0, ',', '.')}}</th>
+                                    <th></th>
+                                </tr>
+                            </table>#}
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+            </div>
+        </div>
+    </div>
+    {% include 'DMDCoffeeBundle:Default:footer.html.twig' %}
+{% endblock body %}
+
+{% block javascripts %}
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/jquery.PrintArea.js') }}'></script> 
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/moment.js') }}'></script> 
+    <script charset="utf-8" type="text/javascript" src='{{ asset('assets/js/plugins/bootstrap-datetimepicker.js') }}'></script> 
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker-from-date').datetimepicker({
+                defaultDate: "{{ from_date }}",
+                format: "YYYY-MM-DD HH:mm:ss"
+            });
+            $('#datetimepicker-to-date').datetimepicker({
+                defaultDate: "{{ to_date }}",
+                format: "YYYY-MM-DD HH:mm:ss"
+            });
+        });
+    </script>
+    {#<script charset="utf-8" type="text/javascript" src='{{ asset('/js/bootstrap-datetimepicker.min.js') }}'></script> #}
+{% endblock javascripts %}

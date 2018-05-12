@@ -1,0 +1,27 @@
+#contact form
+contact:
+    label:
+        name: Tên
+        email: Email
+        message: Nội dung tin nhắn
+        header: Liên hệ
+        is_read: Đã xem
+        is_star: Yêu thích
+        ip_address: IP
+    message:
+        success: "Tin nhắn của bạn đã được gửi cho chúng tôi."
+        error: "Tin nhắn của bạn bị lỗi khi chuyển cho chúng tôi. Bạn hãy thử lại."
+
+#login form
+login:
+    label:
+        forgot_password : "Quên mật khẩu"
+        
+#subcribe form
+subscribe:
+    message:
+        success: "Cảm ơn bạn đã đăng ký email để nhận thông tin từ chúng tôi."
+        error: "Bị lỗi! Có thể email của chúng tôi gửi tới bạn bị lỗi hoặc email của bạn đã được sử dụng."
+        
+"Email address" : "Địa chỉ mail"
+"search + enter" : "Tìm kiếm"

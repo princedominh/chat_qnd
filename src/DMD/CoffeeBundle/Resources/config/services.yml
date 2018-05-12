@@ -1,0 +1,7 @@
+parameters:
+#    dmd_coffee.example.class: DMD\CoffeeBundle\Example
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+services:
+#    dmd_coffee.example:
+#        class: %dmd_coffee.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

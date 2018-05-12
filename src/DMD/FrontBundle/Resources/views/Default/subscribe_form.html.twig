@@ -1,0 +1,8 @@
+<form action="{#{{ url('dmd_front_subscribe') }}#}" method="post">
+    {{ form_widget(form._token) }}
+    <div class="input-append custom-append">
+        {{ form_widget(form.email, {'attr': {'placeholder': 'Email Address'}})}}
+        <button class="btn btn-primary">Đăng ký</button>
+    </div>
+</form><!--close input-append-->
+

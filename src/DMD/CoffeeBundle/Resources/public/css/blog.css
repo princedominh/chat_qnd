@@ -1,0 +1,502 @@
+/* ----------------------- blog post list in sidebar widget*/
+.widget ul.blogposts {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.widget ul.blogposts a {
+    text-decoration: none
+}
+.widget ul.blogposts li {
+    border-bottom: 1px dotted #dddddd;
+    float: left;
+    margin-top: 10px;
+    padding: 0px 0px 10px;
+    width: 100%;
+}
+.widget ul.blogposts li:last-child {
+    border: none;
+    padding: 0px;
+}
+.widget ul.blogposts h3 {
+    font-size: 105%;
+    margin: 0px 0px 5px 50px;
+}
+.widget ul.blogposts p {
+    margin: 0px 0px 0px 50px;
+    font-size: 85%;
+}
+.widget ul.blogposts span.date {
+    background: url(../images/5p.png);
+    color: #000;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    display: block;
+    float: left;
+    line-height: 1;
+    height: 32px;
+    width: 40px;
+    padding: 8px 0 0 0;
+    text-align: center;
+}
+.widget ul.blogposts .date .day {
+    font-size: 13px;
+    font-weight: bold;
+    display: block;
+}
+.lt-ie9 ul.blogposts .date .day {
+    top: 2px
+}
+.widget ul.blogposts span.date .month {
+    font-size: 10px;
+    display: block;
+    position: relative;
+    text-transform: lowercase;
+}
+.widget ul.blogposts span.date .year {
+    display: none
+}
+.widget .nav-pills>.active>a,
+.widget .nav-pills>.active>a:hover, 
+.widget .nav-pills>.active>a:focus {
+    color: #ffffff;
+    background-color: #5676a5;
+}
+/*--------------------------- blog general ---------------------- */
+.entry-post {
+    *zoom: 1 
+}
+.entry-post:before, .entry-post:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.entry-post:after {
+    clear: both
+}
+.entry-meta abbr {
+    border: 0px
+}
+/*--------------------------- blog date ---------------------- */
+.blog.date {
+    text-align: center;
+    display: block;
+    margin:0 auto;
+    background: url(../images/5p.png);
+    color: #000;
+    width: 70px;
+    height: 57px;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+    line-height: 1;
+    padding-top: 13px;
+}
+.blog.date * {
+    display: block
+}
+.blog.date .day {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.blog.date .month {
+    font-size: 11px;
+    text-transform: uppercase;
+    position: relative;
+    top: -1px;
+    left: 1px;
+}
+.blog.date .year {
+    font-size: 10px
+}
+/*--------------------------- blog header ---------------------- */
+
+.blog-detail header .byline, .blog-detail header .entry-meta, .blog-summary header .byline, .blog-summary header .entry-meta {
+    font-size: 1.2rem;
+    line-height: 2;
+}
+.blog-detail header .byline a, .blog-detail header .entry-meta a, .blog-summary header .byline a, .blog-summary header .entry-meta a {
+    text-decoration: none
+}
+.blog-detail header .byline {
+    padding-top: 5px
+}
+.blog-detail .byline abbr {
+    border-bottom: none
+}
+/*--------------------------- blog summary grid (uses isotope masonry base styles in style.css) ---------------------- */
+.blog-summary-grid li {
+	background:#fff;
+	-webkit-box-shadow:  0px 0px 0px 1px rgba(0, 0, 0, .07);
+   	box-shadow:  0px 0px 0px 1px rgba(0, 0, 0, .07);
+    -moz-box-shadow:  0px 0px 0px 1px rgba(0, 0, 0, .07);
+}
+.no-boxshadow .blog-summary-grid li {
+    	border:1px solid #eee;
+}
+.blog-summary-grid li .entry-summary {
+    padding: 5px 10px 10px 10px
+}
+.blog-summary-grid li h4 {
+    padding: 0 0 5px 0;
+    margin: 10px 0 0 0;
+    clear: both;
+}
+.blog-summary-grid li .entry-summary a {
+    text-decoration: none
+}
+.blog-summary-grid li .entry-summary a:hover {
+    text-decoration: underline
+}
+.blog-summary-grid li .entry-summary p {
+    font-size: 85%
+}
+.blog-summary-grid li a.hover {
+    position: relative;
+    display: block;
+}
+.blog-summary-grid .entry-meta {
+    padding-top: 8px;
+    font-size: 11px;
+    text-transform: lowercase;
+    background: url(../images/dot.png) 0 0 repeat-x;
+}
+.blog-summary-grid li a.commentlink {
+    font-size: 11px;
+    clear: both;
+    padding-top: 5px;
+    display: block;
+}
+
+.blog-summary-grid li.quotes .entry-summary blockquote footer {
+    font-size: 50%
+}
+.blog-summary-grid li.quotes h4 {
+    display: none
+}
+.blog-summary-grid li.quotes {
+	background:#f7f7f7;
+}
+
+.blog-summary-grid li.quotes .entry-summary blockquote {
+    padding: 10px 0 0 35px;
+    font-size: 100%;
+	-moz-background-size: 25px 25px;
+	-ie-background-size: 25px 25px;
+	-o-background-size: 25px 25px;
+	-webkit-background-size: 25px 25px;
+	background-size: 25px 25px;
+	background-position:0 5px;
+}
+.blog-summary-grid li.quotes .entry-summary blockquote p {
+    font-size: 100%;
+    line-height: 150%;
+    margin: 0;
+}
+
+.no-backgroundsize .blog-summary-grid li.quotes .entry-summary blockquote {
+	padding:10px 0 0 0;
+	background-image:none;
+}
+
+/* --------------------- hover with icons --------------------*/
+.blog-summary-grid li div.hover {
+    position: relative;
+    display: block;
+    z-index:500;
+    overflow:hidden;
+}
+
+.blog-summary-grid li div.hover span {
+    opacity: 0;
+    position: absolute;
+	-webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -o-transition: all .6s ease;
+	display: block;
+    z-index:100;
+    width:100%;
+    text-align:center;
+    top:-500px;
+    right: 0;
+    left:0;
+    padding: 5px 0;
+	-webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    background: url(../images/50p.png);
+}
+
+.blog-summary-grid li:hover div.hover span {
+    top: 0;
+    opacity: 1;
+}
+
+.blog-summary-grid li:hover div.hover span a {
+	color:#fff;
+	text-decoration: none;
+}
+
+.blog-summary-grid li div.hover span i {
+	font-size:150%;
+}
+
+.blog-summary-grid li div.hover span a:hover {
+	color:#ccc
+}
+
+
+
+/* blog traditional summary
+================================================== */
+.blog-summary .entry-header .entry-title {
+    margin-top: 0
+}
+.blog-summary .entry-header .entry-title a {
+    text-decoration: none
+}
+.span9.blog-summary .entry-content, .span9.blog-summary .entry-header,
+.span8.blog-summary .entry-content, .span8.blog-summary .entry-header {
+    float: right;
+    width: 80%;
+}
+.blog-summary .entry-post {
+    background: url(../images/dot.png) 0 100% repeat-x;
+    padding-bottom: 10px;
+    margin-bottom: 3%;
+}
+/* blog detail
+================================================== */
+.blog-detail {
+    margin-bottom: 20px
+}
+.span9.blog-detail .entry-header, 
+.span9.blog-detail .entry-content, 
+.span9.blog-detail .entry-tags, 
+.span9.blog-detail .entry-pagination, 
+.span9.blog-detail .entry-related {
+    float: right;
+    width: 80%;
+    clear: both;
+}
+.blog-detail .entry-comments {
+    clear: both;
+    float: right;
+    width: 80%;
+}
+/****** entry footer  ******/
+.entry-footer {
+    width: 18%;
+    display: block;
+    margin-right: 2%;
+}
+.blog-detail .entry-footer .addthis_toolbox {
+    padding-top: 30px;
+    margin:0 auto;
+    width: 16px;
+}
+.blog-detail .entry-footer .addthis_toolbox span {
+    margin: 0 auto 10px auto
+}
+.blog-detail .entry-header .addthis_toolbox {
+    display: none
+}
+/****** entry header ******/
+.blog-detail .entry-header {
+    background: url(../images/dot.png) 0 100% repeat-x;
+    padding-bottom: 10px;
+    margin-bottom: 3%;
+    position: relative;
+}
+.blog-summary .entry-header {
+    padding-bottom: 10px;
+    position: relative;
+}
+.blog-detail .entry-header h1, .blog-detail .entry-header h2 {
+    margin-top: 0
+}
+/* Entry Comments
+================================================== */
+.entry-comments input[type="text"], .entry-comments input[type="password"], .entry-comments input[type="datetime"], .entry-comments input[type="datetime-local"], .entry-comments input[type="date"], .entry-comments input[type="month"], .entry-comments input[type="time"], .entry-comments input[type="week"], .entry-comments input[type="number"], .entry-comments input[type="email"], .entry-comments input[type="url"], .entry-comments input[type="search"], .entry-comments input[type="tel"], .entry-comments input[type="color"], .entry-comments textarea {
+    background: #fff
+}
+.entry-comments h3 a {
+    text-decoration: none
+}
+.entry-comments ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.entry-comments li {
+    padding: 10px 0 10px 0;
+    margin: 0 0 10px 0;
+    border-bottom: 1px dotted #ccc;
+}
+.entry-comments ul ul {
+    list-style: none;
+    margin: 0 0 0 5%;
+    padding: 0;
+}
+.entry-comments footer img {
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+.entry-comments footer .comment-meta {
+    float: left;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+.entry-comments footer .comment-meta a {
+    text-decoration: none;
+    border-bottom: 1px solid #777;
+}
+.entry-comments footer .comment-author {
+    display: block
+}
+.entry-comments footer .comment-author cite {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.entry-comments footer .comment-author cite a {
+    text-decoration: none;
+    border: none;
+}
+.entry-comments .text {
+    clear: both;
+    padding-top: 10px;
+    font-size: 1.2rem;
+}
+/* Commment Form
+================================================== */
+#comment-form {
+    margin: 20px 0 0 0;
+    padding-right: 3%;
+}
+#comment-form p {
+    font-size: 1.2rem;
+    font-style: oblique;
+}
+.comment_form label {
+    font-size: 1.2rem
+}
+.comment_form .btn, .comment_form input[type="submit"], .comment_form  input[type="button"] {
+    clear: both;
+    margin-top: 10px;
+}
+.comment_form span.name {
+    float: left;
+    width: 40%;
+}
+.comment_form span.email {
+    float: left;
+    width: 60%;
+}
+.comment_form #name {
+    width: 90%
+}
+.comment_form #email, .comment_form textarea, .comment_form #website {
+    width: 100%
+}
+.comment_form .error input, .comment_form .error textarea {
+    border-color: #fa4700;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* media queries
+================================================== */
+@media only screen and (max-width: 880px) { 
+	/******  date ******/
+	.span9 .blog-detail .date_share .addthis_toolbox {
+	    clear: both;
+	    padding-top: 30px;
+	    margin-left: 15px;
+	    width: 16px;
+	}
+}
+/*end*/
+@media only screen and (max-width:600px) { 
+	.blog-detail .addthis_toolbox span {
+	    margin: 0 auto 10px auto
+	}
+	.blog.date, .blog-detail .entry-footer .addthis_toolbox {
+	    display: none
+	}
+	.blog-summary .entry-content, .blog-summary .entry-header, .blog-detail .entry-header, .blog-detail .entry-content, .blog-detail .entry-tags, .blog-detail .entry-pagination, .blog-detail .entry-related {
+	    width: 100%!important;
+	    float: none!important;
+	}
+	.entry-comments {
+	    width: 94%!important;
+	    float: none;
+	}
+	.entry-comments footer img {
+	    float: none;
+	    margin-bottom: 5px;
+	}
+	.blog-detail .entry-header .addthis_toolbox {
+	    display: block!important;
+	    padding-top: 10px;
+	    height: 16px;
+	}
+	.blog-detail .entry-header .addthis_toolbox span {
+	    float: left;
+	    margin-right: 10px;
+	    height: 16px;
+	}
+	.blog-detail {
+	    padding-top: 3%;
+	    position: relative;
+	}
+	#comment-form {
+	    margin: 3% 0 0 0;
+	    padding-right: 3%;
+	    width: 94%;
+	}
+	.comment_form .btn, .comment_form input[type="submit"], .comment_form  input[type="button"] {
+	    clear: both;
+	    margin-top: 10px;
+	}
+	.comment_form span.name {
+	    width: 90%
+	}
+	.comment_form span.email {
+	    float: none;
+	    width: 100%;
+	}
+	.comment_form #name {
+	    width: 100%
+	}
+	.comment_form #email, .comment_form textarea, .comment_form #website {
+	    width: 90%
+	}
+	.entry-comments footer .comment-meta {
+	    float: none;
+	    margin-left: 0;
+	}
+}
+/*end*/
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), 
+only screen and (min--moz-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2), 
+only screen and (-o-min-device-pixel-ratio: 2/1), 
+only screen and (min-device-pixel-ratio: 2), 
+only screen and (min-resolution: 192dpi), 
+only screen and (min-resolution: 2dppx) { 
+	.blog-summary-grid li.quotes .entry-summary blockquote {
+	    background-image: url(../images/retina/open-quote_@2x.png);
+		-moz-background-size: 25px 25px;
+		-ie-background-size: 25px 25px;
+		-o-background-size: 25px 25px;
+		-webkit-background-size: 25px 25px;
+		background-size: 25px 25px;
+	}
+}

@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ 'cart.check_out' | trans({}, 'DMDFrontBundle') }}{% endblock title %}
+    {% block body %}
+ <div class="container main-content">
+		<table class="list_book_cart order-list table table-bordered" id="tb" >
+		        <tbody>
+		                <thead> 
+		                <tr> 
+		                    <th> Tên </th><th> Giá </th> 
+		                    <th> Số lượng </th><th> Hành động </th> 
+		                </tr> 
+		                <tr>
+		                <td>
+		                 
+		                </td>
+		                </tr>
+		            </thead> 
+		        </tbody>
+
+		</table>
+	<table class="table table-striped">
+
+			<tr>
+				  <td>
+                                                    <div class="">
+                                                    <b style="color:#000;">Tổng tiền:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><span class="badge" style="background:orange; margin-left:10px;">0 </span><b style="color:#000;" >VND</b>
+				  </td>
+		  </tr>
+
+		  <tr>
+				  <td>
+				  		<div class="">
+                                            <button class="btn btn-danger btn-delete-all" type="button">{{ 'header.menu.empty' | trans({},'DMDFrontBundle')}}</button>
+
+                                        </div>
+                                        <div class="" style="float:right; margin:-30px 13px 0px 0px;">
+                                        <a href="{{url('dmd_front_checkout')}}"><button class="btn btn-success" id="checkout-complete" type="button">{{ 'cart.check_out_complete' | trans({},'DMDFrontBundle')}}</button></a>
+
+                                        </div>
+				  </td>
+		  </tr>
+</table>
+</div>
+{% endblock body %}

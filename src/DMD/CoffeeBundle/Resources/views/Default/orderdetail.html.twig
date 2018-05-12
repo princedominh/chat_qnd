@@ -1,0 +1,33 @@
+{% set billTotal = 0 %}
+{% for orderDetail in order.orderDetails %}
+<tr class="order-detail-temp clickable-row" name="orderdetail{{orderDetail.id}}" item="{{ orderDetail.item.id }}">
+    <td class="unprint">{{ loop.index }}</td>
+    <td>{{ orderDetail.item.name }}</td>
+    {#<td>{{ orderDetail.item.unit }}</td>#}
+    <td style="text-align: right" name="od_quantity" value="{{ orderDetail.quantity }}">{{ orderDetail.quantity }}</td>
+    <td style="text-align: right" name="od_price" value="{{ orderDetail.price }}">{{ orderDetail.price|number_format(0, ',', '.') }}</td>
+    <td style="text-align: right" name="od_total" value="{{ orderDetail.total }}">{{ orderDetail.total|number_format(0, ',', '.') }}</td>
+    <td class="unprint">
+        <div class="btn-group">
+            <a class="btn dropdown-toggle cf-dropdown" data-toggle="dropdown" href="#">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <a onclick="removeOrderDetail({{ order.id }},{{orderDetail.id}})">Xoá <i class="icon-remove"></i></a>
+                </li>
+            </ul>
+        </div>
+    </td>
+</tr>
+    {% set billTotal = billTotal + orderDetail.total %}
+{% endfor %}
+<tr class="order-detail-temp">
+    <td colspan="5" style="text-align: right">
+        <b><i name="od_total_all" value="{{billTotal}}">{{ billTotal|number_format(0, ',', '.') }}</i></b>
+    </td>
+    <td class="unprint"></td>
+</tr>
+<script>
+{#    $(".dropdown-toggle").dropdown();#}
+</script>

@@ -1,0 +1,128 @@
+<div class="table-menu">
+<i>{{ order.createdAt | date('H:i d-m-Y') }}</i>
+<div class="order-buttons" ><button class="btn btn-primary">Tính tiền và In hoá đơn</button></div>
+</div>
+<form name="order{{ order.id }}">
+    <table class="table table-hover" >
+        <tr class="order-detail-header">
+            <th>STT</th>
+            <th>Tên món</th>
+            <th>Đơn vị</th>
+            <th>SL</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+            <th>Xoá</th>
+        </tr>
+        {% set billTotal = 0 %}
+        {% for orderDetail in order.orderDetails %}
+        <tr class="order-detail-temp">
+            <td>{{ loop.index }}</th>
+            <td>{{ orderDetail.item.name }}</td>
+            <td>{{ orderDetail.item.unit }}</td>
+            <td>{{ orderDetail.quantity }}</td>
+            <td style="text-align: right">{{ orderDetail.price|number_format(0, ',', '.') }}</td>
+            <td style="text-align: right">{{ orderDetail.total|number_format(0, ',', '.') }}</td>
+            <td><a class="btn btn-mini" href="#" onclick="removeOrderDetail{{ order.id }}({{orderDetail.id}})"><i class="icon-remove"></i></a></td>
+        </tr>
+            {% set billTotal = billTotal + orderDetail.total %}
+        {% endfor %}
+        <tr class="order-detail-temp">
+            <td colspan="6" style="text-align: right">
+                <a class="alert{{ order.id }}"></a>
+                <b><i>{{ billTotal|number_format(0, ',', '.') }}</i></b>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <select class="input-medium" name="item" onchange="updateOrder{{ order.id }}({{ order.id }})">
+                    <option value="0"></option>
+                    {% if items is defined %}
+                        {% for item in items %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </td>
+            <td>
+                <div id="orderUnit"></div>
+            </td>
+            <td>
+                <input type="number" name="quantity" class="input-mini" onchange="updateTotal{{ order.id }}()"/>
+            </td>
+            <td>
+                <div id="orderPrice"></div>
+            </td>
+            <td>
+                <input type="text" name="total" readonly="readonly" class="input-mini" />
+            </td>
+            <td><i class="loadingOrderDetail"><img src="{{ asset('/assets/images/loading.gif') }}" /></i></td>
+        </tr>
+        <tr>
+            <td colspan="7" style="text-align: right">
+                <a class="btn btn-primary" onclick="addOrder{{ order.id }}()">Thêm vào</a>
+            </td>
+        </tr>
+    </table>
+        <div id="div{{ order.id }}"></div>
+</form>
+{% if items is defined %}
+<script type="text/javascript">
+    $(function(){
+        document.order{{ order.id }}.reset();
+    });
+    function updateOrder{{ order.id }}()
+    {
+        item_id = document.order{{ order.id }}.item.value;
+        eval('var unit = items.item'+item_id+'.unit');
+        eval('var price = items.item'+item_id+'.price');
+        $("div#orderUnit").html(''+unit);
+        $("div#orderPrice").html(''+price);
+        updateTotal{{ order.id }}();
+    }
+    
+    function updateTotal{{ order.id }}()
+    {
+        price = parseInt($("div#orderPrice").html());
+        quantity = document.order{{ order.id }}.quantity.value;
+        document.order{{ order.id }}.total.value = price * quantity;
+    }
+    
+    function addOrder{{ order.id }}()
+    {
+        //send order detail to server
+        order_id = {{ order.id }};
+        item_id = document.order{{ order.id }}.item.value;
+        quantity = document.order{{ order.id }}.quantity.value;
+        
+        if((item_id != 0)&&!isNaN(parseFloat(item_id)) && isFinite(item_id)&&(quantity != 0)&&!isNaN(parseFloat(quantity)) && isFinite(quantity)) {
+            $(".loadingOrderDetail").show();
+            $.ajax({url:"{{ url('dmd_coffee_table_orderdetail_add') }}",
+                type: "POST",
+                data: {'order':order_id,'item':item_id,'quantity':quantity},
+                success:function(result){
+                    $("form[name='order{{ order.id }}'] .order-detail-temp").remove();
+                    $("form[name='order{{ order.id }}'] .order-detail-header").after(result);
+                    $(".loadingOrderDetail").hide();
+                    document.order{{ order.id }}.reset();
+            }});
+        } else {
+            alert("Bạn phải nhập nội dung cho món và số lượng chính xác!");
+        }        
+    }
+    
+    function removeOrderDetail{{ order.id }}(orderDetailId)
+    {
+        $(".loadingOrderDetail").show();
+        $.ajax({url:"{{ url('dmd_coffee_table_orderdetail_remove') }}",
+                type: "POST",
+                data: {'order_detail_id':orderDetailId},
+                success:function(result){
+                    $("form[name='order{{ order.id }}'] .order-detail-temp").remove();
+                    $("form[name='order{{ order.id }}'] .order-detail-header").after(result);
+                    $(".loadingOrderDetail").hide();
+            }});
+    }
+</script>
+{% endif %}

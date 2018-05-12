@@ -1,0 +1,8 @@
+{% if form is defined %}
+{{ tinymce_init() }}
+<form name="orderDescription" class="cf-form-description" action="{{ path('dmd_coffee_table_orderdescription_save') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+</form>
+{% else %}
+Lỗi gửi dữ liệu
+{% endif %}

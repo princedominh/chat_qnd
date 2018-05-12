@@ -1,0 +1,31 @@
+{% if pagination.last_page is defined %}
+{% if pagination.last_page > 1 %}
+<div class="pagination-centered">
+    <ul class="pagination">
+        <li {% if pagination.current_page == 1 %}class="unavailable"{% endif %}>
+            <a href="{{ path(router, {'page': 1 } | merge(params)) }}{{ extra }}" title="Trang đầu"><i class="icon-double-angle-left"></i></a>
+        </li>
+        <li {% if pagination.current_page == 1 %} class="unavailable"{% endif %}>
+            <a href="{{ path(router, {'page': pagination.previous_page } | merge(params)) }}{{ extra }}" title="Trang trước"><i class="icon-angle-left"></i></a>
+        </li>
+    {% for page in 1..pagination.last_page %}
+        {% if page == pagination.current_page %}
+        <li class="current">
+            <a href="#">{{ page }}</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{{ path(router, {'page': page } | merge(params)) }}{{ extra }}">{{ page }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+        <li {% if pagination.current_page == pagination.last_page %} class="unavailable"{% endif %}>
+            <a href="{{ path(router, {'page': pagination.next_page } | merge(params)) }}{{ extra }}" title="Trang tiếp theo"><i class="icon-angle-right"></i></a>
+        </li>
+        <li {% if pagination.current_page == pagination.last_page %} class="arrow unavailable"{% endif %}>
+            <a href="{{ path(router, {'page': pagination.last_page } | merge(params)) }}{{ extra }}" title="Trang cuối"><i class="icon-double-angle-right"></i></a>
+        </li>
+    </ul>
+</div>
+{% endif %}
+{% endif %}

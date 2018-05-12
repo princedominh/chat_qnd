@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Gia Thiện Coffee Shop">
+        <meta name="author" content="telex.vn">
+        <title>Gia Thiện Coffee</title>
+        
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <!-- Retina.js -->
+        <!-- WARNING: Retina.js doesn't work if you view the page via file:// -->
+        <script src="assets/js/plugins/retina.min.js"></script>
+
+        <!-- jQuery Version 1.11.3 -->
+        <script src="assets/js/plugins/jquery-1.11.3.js"></script>
+
+
+        <!-- Bootstrap Core CSS -->
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Animate CSS -->
+        <link href="assets/css/animate.min.css" rel="stylesheet">
+
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+        <link href="assets/fonts/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Main CSS -->
+        <link href="assets/css/coffee.dmd.css" rel="stylesheet">
+
+        <!-- Your custom CSS -->
+        <link href="assets/css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="assets/js/plugins/htmlshiv.min.js"></script>
+            <script src="assets/js/plugins/respond.min.js"></script>
+        <![endif]-->
+        
+                    <!-- Google Maps -->
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        </head>
+    <body id="page-top" class="index">
+                <div class="loading-screen">
+            <div class="content animated fadeInDown">
+                <i class="fa fa-circle-o-notch fa-spin"></i>
+                <h2 class="section-heading">Perfecting your coffee</h2>
+                <h3 class="section-subheading">Please wait...</h3>
+            </div>
+        </div>
+
+        <!-- Main Slider -->
+        <header id="header" class="intro">
+            <div id="hero-carousel" class="carousel slide" data-ride="carousel">
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+
+                <!-- Start slide -->
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="slide-content animated fadeInDown">
+                                <span class="section-icon">W</span>
+                                <h1>The perfect coffee house</h1>
+                                <h2>Cà phê hảo hạng</h2>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <div class="video-container">
+                        <video id="video" autoplay loop class="fillWidth">
+                            <source src="assets/video/video.mp4" type="video/mp4"/>
+                            <source src="assets/video/video.ogg" type="video/ogg"/>
+                            <source src="assets/video/video.webm" type="video/webm"/>
+                        </video>
+                    </div>
+                </div>
+                <!-- End slide -->
+
+              </div><!-- /.carousel-inner -->
+
+            <a href="#nav" class="btn page-scroll header-scroll">
+                <i class="fa fa-angle-down animated"></i>
+            </a>
+
+            </div><!-- /#hero-carousel -->
+        </header><!-- /.intro -->
+        <!-- End Main Slider -->
+
+        <!-- Navigation -->
+        <nav id="nav" class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle are grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div><!-- /.navbar-header -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a class="page-scroll" href="#header">Trang chủ</a></li>
+                        <li><a class="page-scroll" href="#menus">Menus</a></li>
+                        <li><a class="page-scroll" href="#book">Đặt bàn</a></li>
+                    </ul>
+                    <a class="navbar-brand page-scroll" href="http://cfgiathien.local/">
+                        <img src="assets/images/navigation_logo.png" alt="">
+                    </a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="#gallery">Gallery</a></li>
+                        <li><a class="page-scroll" href="#map">Bản đồ</a></li>
+                        <li><a class="page-scroll" href="#footer">Liên hệ</a></li>
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- End Navigation -->
+
+        <!-- Introduction Section -->
+        <section id="intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center wow zoomIn">
+                        <h2 class="section-heading">Một trải nghiệm đặc biệt cho những người yêu thưởng thức.</h2>
+                        <span class="section-divider">M</span>
+                        <h3 class="section-subheading text-muted">Cà phê nguyên chất, nguyên liệu đảm bảo <span>... chế biến công phu.</span></h3>
+                        <a href="#unique" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+        <!-- End Introduction Section -->
+
+        <!-- Unique Chain Section -->
+        <section id="unique">
+            <div class="container wow fadeInUp">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <span class="section-icon">x</span>
+                        <h2 class="section-heading">Gia Thiện là địa chỉ vàng cho những người yêu thích cà phê.</h2>
+                        <h3 class="section-subheading">Chúng tôi tạo không gian thoải mái nhất cho những cặp đôi, gia đình.</h3>
+                        <a href="#about" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+        <!-- End Unique Chain Section -->
+
+        <!-- Choose Restaurant Section -->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="section-subheading wow fadeInDown">Đôi nét về Gia Thiện</h3>
+                    </div>
+                </div><!-- /.row-->
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 text-center wow fadeInLeft">
+                        Địa chỉ: 20-22 Tôn Đức Thắng, Quy Nhơn
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 text-center wow fadeInUp">
+                        Điện thoại: 093 522 85 86
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 text-center wow fadeInUp">
+                        Mở cửa: 6:00AM tới 10:00PM
+                    </div>
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">      
+                        <a href="#menus" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+        <!-- End Restaurants Section -->
+
+        <!-- Menus Section -->
+        <section id="menus">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading wow fadeInDown">Các lựa chọn hôm nay</h2>
+                        <h3 class="section-subheading wow fadeInDown">Xem menu</h3>
+                        <ul class="wow fadeInUp">
+                            <li><a href="#menuModal1" data-toggle="modal">Cà phê</a></li>
+                            <li><a href="#menuModal2" data-toggle="modal">Trà</a></li>
+                            <li><a href="#menuModal3" data-toggle="modal">Nước trái cây</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12">
+                        <a href="#book" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+        <!-- End Menus Section -->
+
+        <!-- Book Section -->
+        <section id="book">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading wow fadeInDown">Đặt bàn</h2>
+                        <h3 class="section-subheading wow fadeInDown">Cho chúng tôi biết tên, thời gian và số lượng người tham gia buổi tiệc:</h3>
+                    </div>
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 wow fadeInUp signup_form">
+
+                          <form id="bookForm" class="form form-table text-center" name="table_reservation" novalidate>
+                            <h6>Nhập tất cả các ô dữ liệu.</h6>
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="first_name1">first name</label>
+                                <input class="form-control hint" type="text" id="first_name1" name="first_name" placeholder="first name" required data-validation-required-message="Please enter your first name.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="last_name1">last name</label>
+                                <input class="form-control hint" type="text" id="last_name1" name="last_name" placeholder="last name" required data-validation-required-message="Please enter your last name.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="email1">email</label>
+                                <input class="form-control hint" type="email" id="email1" name="email" placeholder="email@" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="phone1">phone</label>
+                                <input class="form-control hint" type="text" id="phone1" name="phone" placeholder="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="reserv_date1">reservation date</label>
+                                <input class="form-control datepicker hasDatepicker hint" type="text" id="reserv_date1" name="reserv_date" placeholder="reservation date" required data-validation-required-message="Please enter your reservation date.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="numb_guests1">number of guests</label>
+                                <input class="form-control hint" type="text" id="numb_guests1" name="numb_guests" placeholder="number of guests" required data-validation-required-message="Please enter number of guests.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="alt_reserv_date1">alternate reservation date</label>
+                                <input class="form-control datepicker hasDatepicker hint" type="text" id="alt_reserv_date1" name="alt_reserv_date" placeholder="alternate reservation date" required data-validation-required-message="Please enter your alternate reservation date.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="col-lg-6 col-md-6 form-group">
+                                <label class="sr-only" for="time1">time</label>
+                                <input class="form-control timepicker ui-timepicker-input hint" type="text" id="time1" name="time" placeholder="time" required="" autocomplete="off" data-validation-required-message="Please enter your arrival time.">
+                                <p class="help-block text-danger"></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12">
+                                <p>Due to the limitation of seats, we only accept a maximum of six people per booking. Private hire of the premises is available (for 14 people) with bespoke menus on request.</p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl btn-primary">submit</button>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
+                    <div class="col-sm-12">
+                        <a href="#gallery" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+        <!-- End Book Section -->
+
+        <!-- Gallery Section -->
+        <div id="gallery">
+            <div id="gallery-carousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#gallery-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#gallery-carousel" data-slide-to="1"></li>
+                <li data-target="#gallery-carousel" data-slide-to="2"></li>
+              </ol><!-- /.carousel-indicators -->
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <!-- Start slide -->
+                <div class="item active">
+                    <img src="assets/images/gallery.jpg" alt="" data-no-retina>
+                </div>
+                <!-- End slide-->
+                <!-- Start slide -->
+                <div class="item">
+                    <img src="assets/images/gallery2.jpg" alt="" data-no-retina>
+                </div>
+                <!-- End slide -->
+                <!-- Start slide -->
+                <div class="item">
+                    <img src="assets/images/gallery3.jpg" alt="" data-no-retina>
+                </div>
+                <!-- End slide -->
+              </div><!-- /.carousel-inner -->
+
+            <!-- Controls -->
+              <a class="left carousel-control" href="#gallery-carousel" role="button" data-slide="prev">
+                <span class="fa fa-angle-left"></span>
+              </a>
+              <a class="right carousel-control" href="#gallery-carousel" role="button" data-slide="next">
+                <span class="fa fa-angle-right"></span>
+              </a>
+
+            </div><!-- /#hero-carousel -->
+        </div>
+        <!-- End Gallery Section -->
+
+        <div class="map" id="map">
+            <div id="homepage_map"></div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer id="footer">
+              <div class="container inner">
+                  <div class="row">
+
+                      <div class="col-md-12 text-center">
+                          <h2 class="section-heading wow fadeInDown" >Liên hệ với Gia Thiện</h2>
+                      </div>
+
+                      <div class="col-md-3 col-sm-6 inner">
+                          <h3 class="section-subheading">Về chúng tôi <span>M</span></h3>
+                          <p>Là quán cà phê đẹp ở TP Quy Nhơn, cung cấp thức uống chất lượng, không gian thoải mái, ấm cúng.</p>
+                          <a href="about.html" class="txt-btn">Thông tin chi tiết</a>
+                      </div><!-- /.col -->
+
+                      <div class="col-md-3 col-sm-6 inner">
+                          <h3 class="section-subheading">Thời gian mở cửa <span>X</span></h3>
+                            <p><em>Thứ 2 &ndash; Thứ 6</em>&nbsp;&nbsp;<strong>6:00am &ndash; 10:00pm</strong></p>
+                            <p><em>Thứ 7 &ndash; Chủ nhật</em>&nbsp;&nbsp;<strong>6:00am &ndash; 11pm</strong></p>
+                      </div><!-- /.col -->
+
+                      <div class="col-md-3 col-sm-6 inner">
+                          <h3 class="section-subheading">Liên lạc với chúng tôi <span>V</span></h3>
+                          <p>.</p>
+                          <ul class="contacts">
+                              <li><i class="icon-location contact"></i> 20-22 Tôn Đức Thắng, Quy Nhơn</li>
+                              <li><i class="icon-mobile contact"></i> <a href="tel:0935228586">(+84) 093 522 85 86</a></li>
+                              <li><a href="#"><i class="icon-mail-1 contact"></i> <a href="mailto:cfgiathien@gmail.com">cfgiathien@gmail.com</a></li>
+                          </ul><!-- /.contacts -->
+                      </div><!-- /.col -->
+
+                      <div class="col-md-3 col-sm-6 inner">
+                          <h3 class="section-subheading">Đăng ký nhận tin <span>x</span></h3>
+                          <p>Để dễ dàng nhận thông tin các chương trình đặc biệt của Gia Thiện, hãy đăng ký email:</p>
+                            <div id="mc_embed_signup">
+                                <form id="newsletter" class="form-inline newsletter" role="form" action="mailchimp_code_here" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+                                <div id="mc_embed_signup_scroll">
+                                    <input type="email" value="" name="EMAIL" class="required email form-control input-large" id="mce-EMAIL" placeholder="Email address*" required>
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response hide" id="mce-error-response"></div>
+                                        <div class="response hide" id="mce-success-response"></div>
+                                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div class="bots"><input type="hidden" name="b_d3e5ba7f28f3f616054cdc3f7_8dd74308df" tabindex="-1" value=""></div>
+                                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-block btn-submit btn-primary"></div>
+                                </div>
+                                </form>
+                            </div><!--End mc_embed_signup-->
+                      </div><!-- /.col -->
+
+                  </div><!-- /.row --> 
+              </div><!-- .container -->
+
+              <div class="footer-bottom">
+                  <div class="container inner">
+                      <p class="pull-left">&copy; 2016 Gia Thien. designed by <a href="http://telex.vn">Telex.vn</a>. All rights reserved.</p>
+                      <ul class="footer-menu pull-right">
+                          <li><a href="#header">Trang chủ</a></li>
+                          <li><a href="#coffee">Bán hàng</a></li>
+                          <li><a href="#book">Đặt bàn</a></li>
+                          <li><a href="#gallery">Gallery</a></li>
+                          <li><a href="#footer">Liên hệ</a></li>
+                      </ul><!-- .footer-menu -->
+                  </div><!-- .container -->
+              </div><!-- .footer-bottom -->
+        </footer><!-- footer -->
+        <!-- End Footer Section -->
+
+        <!-- Restaurant modal -->
+        <div class="popup-modal modal fade restaurantPopUp" id="restaurantModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                            <div class="modal-body">
+                                <!-- News Article Goes Here -->
+                                <h2 class="section-heading">Foodster Manchester</h2>
+                                <h3 class="section-subheading">A fine dining experience in Manchester</h3>
+                                <img class="img-responsive img-centered" src="assets/images/restaurant_gallery_1.jpg" alt="" data-no-retina>
+
+                                <div class="map">
+                                    <div id="restaurant_map"></div>
+                                </div>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu modal -->
+        <div class="popup-modal modal fade" id="menuModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <!-- News Article Goes Here -->
+                                <span class="section-icon">W</span>
+                                <h2 class="section-heading">CÀ PHÊ</h2>
+                                <h3 class="section-subheading">Tỉnh táo tinh thần, giảm nguy cơ của một số bệnh nguy hiểm</h3>
+                                <img class="img-responsive img-centered" src="/assets/images/coffee2.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Cappuccino</h4>
+
+                                <p>Hương vị tuyệt hảo đến từ nước Ý.<br><strong>25.000.000đ</strong></p>
+
+                                <img class="img-responsive img-centered" src="/assets/images/coffee3.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Cortado</h4>
+
+                                <p>Cà phê pha kiểu espresso được cho thêm chút sữa ấm đến từ Bồ Đào Nha.<br><strong>30.000.000đ</strong></p>
+
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.modal-content -->
+        </div>
+        <!-- End menu modal -->
+
+        <!-- Menu modal -->
+        <div class="popup-modal modal fade" id="menuModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <!-- News Article Goes Here -->
+                                <span class="section-icon">V</span>
+                                <h2 class="section-heading">Trà</h2>
+                                <h3 class="section-subheading">Cho những người yêu sự nhẹ nhàng, sâu lắng</h3>
+                                <img class="img-responsive img-centered" src="assets/images/tradao1.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Trà đào</h4>
+
+                                <p>Là thứ đồ uống rất được ưa chuộng ở Sài Gòn.<br><strong>25.000.000đ</strong></p>
+
+                                <img class="img-responsive img-centered" src="assets/images/tra-sua-tra-xanh-5.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Trà sữa trà xanh</h4>
+
+                                <p>Món uống vô cùng trẻ trung và bổ dưỡng.<br><strong>25.000.000</strong></p>
+
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.modal-content -->
+        </div>
+        <!-- End menu modal -->
+
+        <!-- Menu modal -->
+        <div class="popup-modal modal fade" id="menuModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <!-- News Article Goes Here -->
+                                <span class="section-icon">a</span>
+                                <h2 class="section-heading">Nước trái cây</h2>
+                                <h3 class="section-subheading">Giải nhiệt mùa nóng hiệu quả, cộng thêm đẹp da và khoẻ dáng</h3>
+                                <img class="img-responsive img-centered" src="assets/images/drink1.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Dâu húng chanh</h4>
+
+                                <p>Một sự pha trộn lành mạnh với một hương vị ngọt trái cây tuyệt vời.<br><strong>35.000.000đ</strong></p>
+
+                                <img class="img-responsive img-centered" src="assets/images/drink2.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Nước ép xoài</h4>
+
+                                <p>Có thể nói gì hơn? Hãy thử nó ngay!<br><strong>20.000.000đ</strong></p>
+
+                                <img class="img-responsive img-centered" src="assets/images/drink3.jpg" alt="" data-no-retina>
+
+                                <h4 class="section-subsubheading">Ngọc trai cổ điển</h4>
+
+                                <p>Các thức quả hỗn hợp nhưng có hương vị rất đặc trưng cho xữ sở nhiệt đói<br><strong>50.000.000</strong></p>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.modal-content -->
+        </div>
+        <!-- End menu modal -->
+
+        <div class="scroll-up">
+            <a class="page-scroll" href="#header"><i class="fa fa-angle-double-up"></i></a>
+        </div>
+
+    
+        <!-- Bootstrap Core JavaScript -->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- jQuery Easing -->
+        <script src="assets/js/plugins/jquery.easing.1.3.js"></script>
+
+        <!-- WOW plugin (used for animated sections) -->
+        <script src="assets/js/plugins/wow.min.js"></script>
+
+        <!-- jQuery Bootstrap Validation for Booking Form -->
+        <script src="assets/js/plugins/jqBootstrapValidation.js"></script>
+
+        <!-- Only run this JS on this page -->
+        <script>
+        $(document).scroll( function() {
+            "use strict";
+            // Add and remove the navbar-shrink class for fixed navigation on page scroll
+            if ( $(this).scrollTop()>=$('header').position().top ) {
+                $('nav').addClass('navbar-shrink');
+            }
+
+            if ( $(window).scrollTop() < $('header').height() + 1 ) {
+                $('nav').removeClass('navbar-shrink');
+            }
+        });
+        </script>
+
+        <!-- Placeholders.js provides IE 6-9 support of HTML5 placeholder -->
+        <!--[if lte IE 9]>
+            <script src="assets/js/plugins/placeholders.min.js"></script>
+        <![endif]-->
+
+                <!-- Foodster JavaScript -->
+        <script src="assets/js/coffee.dmd.js"></script>
+
+        <!-- For demo purposes only -->
+        <!--<script src="assets/demo/style.switcher.js"></script>-->
+
+        <!-- Your Custom JavaScript -->
+        <script src="assets/js/custom.js"></script>
+        </body>
+</html>

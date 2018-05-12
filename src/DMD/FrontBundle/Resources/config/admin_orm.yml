@@ -1,0 +1,17 @@
+services:
+    dmd.front.contact:
+        class: DMD\FrontBundle\Admin\Entity\ContactAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: News, label: "Contacts" }
+        arguments: [null, DMD\FrontBundle\Entity\Contact, null ]
+    dmd.front.subscriber:
+        class: DMD\FrontBundle\Admin\Entity\SubscriberAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: News, label: "Subscribers" }
+        arguments: [null, DMD\FrontBundle\Entity\Subscriber, null ]
+#        arguments:
+#            - ~
+#            - DMDFrontBundle:Contact,
+#            - ~
+#        calls:
+#            - [setTranslationDomain, []]

@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Trang lỗi</h1>
+    
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>{{ status_code }}: {{ status_text }}</p>
+    {% endif%}
+
+    <p>
+        Nội dung trang không thể tải được. Hãy kiểm tra lại đường dẫn hoặc 
+        <a href="{{ path('homepage') }}">trở về trang chủ</a>
+    </p>
+{% endblock body %}

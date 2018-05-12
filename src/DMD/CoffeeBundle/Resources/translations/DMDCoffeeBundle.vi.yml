@@ -1,0 +1,98 @@
+"Add Order" : "Tạo đặt hàng"
+
+"Area Create": "Thêm Khu vực"
+"Area List": "Danh sách Khu vực"
+"Category Create": "Thêm Danh mục"
+"Category List": "Danh sách các danh mục"
+"Item Create": "Thêm Món"
+"Item List": "Danh sách Món"
+"Inventory Receiving Voucher Create": "Tạo Danh sách Nhập kho"
+"Inventory Receiving Voucher List": "Danh sách Nhập kho"
+"Recipe Create": "Thêm Công thức"
+"Recipe List": "Danh sách Công thức"
+"Table Create": "Thêm Bàn"
+"Table List": "Danh sách bàn"
+"Unit Create": "Thêm Đơn vị"
+"Unit List": "Danh sách đơn vị"
+
+Action: "Hành Động"
+
+General: "Thông tin cơ bản"
+
+Inventory: "Kho"
+
+label_type_equals: "Bằng"
+label_type_not_equals: "Không bằng"
+
+Name: "Tên"
+
+Recipe: "Công thức"
+Recipes: "Các thành phần"
+
+
+area:
+    label:
+        label: "Khu vực"
+        name: Tên
+        alias: "Tên tắt"
+category:
+    label:
+        label: "Danh mục"
+        name: Tên
+        alias: "Tên tắt"
+        parent: "Danh mục cha"
+coffee:
+    label:
+        recipe: "Công thức"
+material:
+    label:
+        label: "Nguyên liệu"
+        name: Tên
+        description: "Mô tả"
+inventory:
+    label:
+        material: "Nguyên liệu"
+        unit: "Đơn vị tính"
+        quantity: "Số lượng"
+        user:   "Người nhập liệu"
+        receiving_voucher: "Nhập hàng"
+        price: "Giá"
+        created_at: "Ngày nhập"
+item:
+    label:
+        label: "Món"
+        name: Tên
+        alias: "Tên tắt"
+        category: "Danh mục"
+        images: "Ảnh"
+        prices: "Giá"
+        description: "Mô tả"
+        unit:   "Đơn vị"
+        is_star: "Nổi bật"
+        current_price: "Giá hiện tại"
+        created_at: "Ngày tạo"
+        recipe: "Công thức"
+        current_cost: "Giá gốc"
+        
+        item: "Món"
+        price: "Giá"
+        used_at: "Ngày sử dụng"
+table:
+    label:
+        label: "Bàn"
+        name: Tên
+        alias: "Tên tắt"
+        area: "Khu vực"
+        description: "Mô tả"
+        created_at: "Ngày tạo"
+        
+unit:
+    label:
+        label: "Đơn vị"
+        name: Tên
+        material: "Nguyên liệu"
+        item: "Món"
+        base: "Đơn vị gốc"
+        reference: "Đơn vị quy đổi"
+        quantity: "Số lượng"
+        unit: "Đơn vị"

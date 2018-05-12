@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container main-content">
+    <div class="row-fluid">
+        <div class="span12 primary-column">
+            Thời gian bắt đầu: {{ from_date }} <br/>
+            Thời gian kết thúc: {{ to_date }} 
+            <table class="table table-hover" >
+                <tr class="order-detail-header">
+                    <th>STT</th>
+                    <th>Tên món</th>
+                    <th>ĐVT</th>
+                    <th style="text-align: right">SL</th>
+                    <th style="text-align: right">Đơn giá</th>
+                    <th style="text-align: right">Thành tiền</th>
+                    <th class="unprint">Thời gian</th>
+                </tr>
+                {% set billTotal = 0 %}
+                {% for orderDetail in order.orderDetails %}
+                <tr class="order-detail-temp">
+                    <td>{{ loop.index }}</th>
+                    <td>{{ orderDetail.item.name }}</td>
+                    <td>{{ orderDetail.item.unit }}</td>
+                    <td style="text-align: right">{{ orderDetail.quantity }}</td>
+                    <td style="text-align: right">{{ orderDetail.price|number_format(0, ',', '.') }}</td>
+                    <td style="text-align: right">{{ orderDetail.total|number_format(0, ',', '.') }}</td>
+                    <td class="unprint"><a class="btn btn-mini" href="#" onclick="removeOrderDetail{{ order.id }}({{orderDetail.id}})"><i class="icon-remove"></i></a></td>
+                </tr>
+                    {% set billTotal = billTotal + orderDetail.total %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script type="text/javascript">
+    $(function() {
+        
+    });
+</script>
+<script charset="utf-8" type="text/javascript" src='{{ asset('/js/jquery.PrintArea.js') }}'></script> 
+{% endblock script %}

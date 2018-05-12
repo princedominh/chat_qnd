@@ -1,0 +1,7 @@
+parameters:
+#    dmd_news.example.class: DMD\NewsBundle\Example
+
+services:
+#    dmd_news.example:
+#        class: %dmd_news.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

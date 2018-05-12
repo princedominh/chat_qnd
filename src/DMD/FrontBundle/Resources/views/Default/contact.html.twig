@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+    {% block title %}{{ 'Contact us' | trans({}, 'DMDFrontBundle') }}{% endblock title %}
+
+    {% block body %}
+    <div class="page-header">
+        <h1>{{ 'contact.label.header' | trans() }}</h1>
+    </div>
+    <div class="container main-content">
+    <!-------- GOOGLE MAP ------>
+    <div class="gg-map">
+     <iframe width="1135" height="650" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/ms?msa=0&amp;msid=204608855209502834592.0004f8bd193ce861d7b15&amp;hl=vi&amp;ie=UTF8&amp;ll=13.80136,109.18694&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe><br /><small>Xem <a href="https://www.google.com/maps/ms?msa=0&amp;msid=204608855209502834592.0004f8bd193ce861d7b15&amp;hl=vi&amp;ie=UTF8&amp;ll=13.80136,109.18694&amp;spn=0,0&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">Kohi Coffee</a> ở bản đồ lớn hơn</small>
+     </div>
+     <!-----END GOOGLE MAP --->
+        <div class="row-fluid">
+            <div class="span6">
+                            <form action="{{ path('dmd_front_contact') }}" method="post" {{ form_enctype(form) }}>
+                                {{ form_widget(form) }}
+
+                                    <input class="btn btn-primary" type="submit" value="{{ 'form.label.submit_send' | trans({}, 'DMDFrontBundle') }}" />
+                            </form>
+            </div>
+        </div>
+    </div>
+     
+    {% endblock body %}

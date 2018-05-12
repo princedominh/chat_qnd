@@ -1,0 +1,23 @@
+homepage:
+    path:  /
+    defaults: { _controller: DMDFrontBundle:Default:index }
+
+dmd_front_homepage:
+    path:  /hello/{name}
+    defaults: { _controller: DMDFrontBundle:Default:index }
+
+dmd_front_products:
+    path:  /products
+    defaults: { _controller: DMDFrontBundle:Default:products }
+
+dmd_front_contact:
+    path:  /contact
+    defaults: { _controller: DMDFrontBundle:Default:contact }
+    
+dmd_front_subscribe:
+    path:  /subscribe
+    defaults: { _controller: DMDFrontBundle:Default:subscribe }
+
+dmd_front_checkout:
+    path:  /checkout
+    defaults: { _controller: DMDFrontBundle:Default:checkout }

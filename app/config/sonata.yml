@@ -1,0 +1,190 @@
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes           
+
+sonata_admin:
+    title:      Coffee
+    title_logo: assets/images/logo3.png
+    
+    security:
+        handler:              sonata.admin.security.handler.acl
+        information:
+            GUEST:    [VIEW, LIST]
+            STAFF:    [EDIT, LIST, CREATE]
+            EDITOR:   [OPERATOR, EXPORT]
+            ADMIN:    [MASTER]
+        admin_permissions:
+            # Defaults:
+            - CREATE
+            - LIST
+            - DELETE
+            - UNDELETE
+            - EXPORT
+            - OPERATOR
+            - MASTER
+        object_permissions:
+
+            # Defaults:
+            - VIEW
+            - EDIT
+            - DELETE
+            - UNDELETE
+            - OPERATOR
+            - MASTER
+            - OWNER
+        acl_user_manager:     null
+        
+    options:
+        html5_validate:       true
+
+        # Auto order groups and admins by label or id
+        sort_admins:          false
+        confirm_exit:         true
+        use_select2:          true
+        use_icheck:           true
+        use_bootlint:         false
+        use_stickyforms:      true
+#        pager_links:          null
+        form_type:            standard
+        dropdown_number_groups_per_colums:  2
+        title_mode:           both # One of "single_text"; "single_image"; "both"
+
+        # Enable locking when editing an object, if the corresponding object manager supports it.
+        lock_protection:      false
+
+    dashboard:
+        groups:
+            Users: 
+                label: Users
+                icon: "%sonata.user.groupicon%" 
+                items: 
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group 
+                roles: [ROLE_SUPER_ADMIN]
+                    
+            Coffee: 
+                label: Coffee
+                icon: "%sonata.coffee.groupicon%" 
+                items: 
+                    - dmd.coffee.category
+                    - dmd.coffee.item
+                    - dmd.coffee.area
+                    - dmd.coffee.table
+                roles: [ROLE_ADMIN, ROLE_COFFEE_ADMIN]
+            Material: 
+                label: "Material"
+                icon: "%sonata.material.groupicon%" 
+                items: 
+                    - dmd.coffee.material
+                    - dmd.coffee.unit
+                    - dmd.coffee.unitreference
+                    - dmd.coffee.recipe
+#                    - dmd.coffee.recipeprice
+                roles: [ROLE_ADMIN, ROLE_COFFEE_ADMIN]
+            Inventory: 
+                label: "Inventory"
+                icon: "%sonata.inventory.groupicon%" 
+                items: 
+                    - dmd.coffee.inventory_receiving_voucher
+                roles: [ROLE_ADMIN, ROLE_COFFEE_ADMIN, ROLE_COUNTER]
+#            News:
+#                label: News
+#                icon: "%sonata.news.groupicon%" 
+#                items: 
+#                    - dmd.front.contact
+#                    - dmd.front.subscriber
+#                roles: [ROLE_ADMIN, ROLE_COFFEE_ADMIN, ROLE_COUNTER]
+
+    persist_filters:      true
+    show_mosaic_button:   true
+    
+sonata_user:
+#    security_acl: true
+#    manager_type: orm # can be orm or mongodb
+    security_acl: true
+    manager_type: orm # Can be orm or mongodb
+
+    table:
+        user_group: "my_custom_user_group_association_table_name"
+
+#    impersonating:
+#        route:                page_slug
+#        parameters:           { path: / }
+
+    class:                  # Entity Classes
+        user:               Application\Sonata\UserBundle\Entity\User
+        group:              Application\Sonata\UserBundle\Entity\Group
+
+    admin:                  # Admin Classes
+        user:
+            class:          Sonata\UserBundle\Admin\Entity\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+        group:
+            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+    profile:
+        default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if user doesn't have one
+        # As in SonataAdminBundle's dashboard
+        dashboard:
+            groups:
+
+                # Prototype
+                id:
+                    label:                ~
+                    label_catalogue:      ~
+                    items:                []
+                    item_adds:            []
+                    roles:                []
+            blocks:
+                type:                 ~
+                settings:
+
+                    # Prototype
+#                    id:                   []
+#                position:             [right]
+        register:
+            # You may customize the registration forms over here
+            form:
+                type:                 sonata_user_registration
+                handler:              sonata.user.registration.form.handler.default
+                name:                 sonata_user_registration_form
+                validation_groups:
+
+                    # Defaults:
+                    - Registration
+                    - Default
+            # This allows you to specify where you want your user redirected once he activated his account
+            confirm:
+                redirect:
+                    # Set it to false to disable redirection
+                    route: 'sonata_user_profile_show'
+                    route_parameters: ~
+
+        # Customize user portal menu by setting links
+        menu:
+            -
+                route: 'sonata_user_profile_edit'
+                label: 'link_edit_profile'
+                domain: 'SonataUserBundle'
+            -
+                route: 'sonata_user_profile_edit_authentication'
+                label: 'link_edit_authentication'
+                domain: 'SonataUserBundle'
+
+        # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
+            

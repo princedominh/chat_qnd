@@ -1,0 +1,390 @@
+{% extends '::base.html.twig' %}
+{% block title %}Quản lý bán hàng{% endblock title %}
+{% block stylesheets %}
+    <link type="text/css" href="{{ asset('bundles/dmdcoffee/css/style.css') }}" rel="stylesheet">
+    <link type="text/css" media="print" href="{{ asset('bundles/dmdcoffee/css/print.css') }}" rel="stylesheet">
+{#<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />#}
+    <link type="text/css" href="{{ asset('bundles/sonatacore/vendor/select2/select2.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    
+<div class="container main-content">
+    {% include 'DMDCoffeeBundle:Default:menu.html.twig' %}
+    <div class="row">
+        <div class="col-md-6 primary-column">
+        {% for area in areas %}
+                <h3 class="short_headline"><span>{{ area.name }}</span></h3>
+            {% for table in area.tables %}
+                <div class="table-short col-md-2">
+                    <a class="btn tbl-coffee {% if not table.finished %}btn-danger{% endif %}" 
+                       href="#table-alias-{{table.alias}}"> {{ table.name }} </a>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <section class="col-md-6 sidebar secondary-column">
+            <div id="right-panel">
+                <div id="loading-data"></div>
+            {% for area in areas %}
+                {% for table in area.tables %}
+                    <div id="h-table-{{table.alias}}" class="h-table h-table-hide">
+                        {% if table.CurrentOrder is defined %}
+                            {% include 'DMDCoffeeBundle:Default:table.html.twig' with {'order': table.CurrentOrder} %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<div id="coffee-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="coffeeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="coffeeModalLabel">Tiêu đề</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+                <a class="btn btn-primary btn-save" id="modal-description-save">Lưu mô tả</a>
+                <a class="btn btn-primary btn-save" id="modal-changetable-save">Chuyển bàn</a>
+                <a class="btn btn-primary btn-save" id="modal-mergetable-save">Nhập bàn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="table-list-hidden">
+    {% for area in areas %}
+            <h3 class="short_headline"><span>{{ area.name }}</span></h3>
+            <div class="table-line">
+        {% for table in area.tables %}
+                <a class="btn change-table {% if not table.finished %}btn-danger{% endif %}" id="change-table-{{table.id}}"
+                   href="#table-alias-{{table.alias}}"
+                   onclick="selectChangeTable({{table.id}},'{{table.alias}}');"
+                   > {{ table.name }} </a>
+        {% endfor %}
+            </div>
+    {% endfor %}
+</div>
+{% include 'DMDCoffeeBundle:Default:footer.html.twig' %}
+{% endblock body %}
+
+{% block javascripts %}
+{#    <script src="{{ asset('assets/js/select2.min.js') }}"></script>#}
+    <script src="{{ asset('bundles/sonatacore/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('bundles/sonatacore/vendor/select2/select2_locale_vi.js') }}"></script>
+    
+    <script src="{{ asset('bundles/dmdcoffee/js/coffee.js') }}"></script>
+    <script type="text/javascript">
+    var current_table_alias = window.location.hash.replace("#", "").substring(12);//table-alias
+    {% if items is defined %}
+    var items = {
+        {% for item in items %}
+            'item{{ item.id }}' : { 'name': '{{ item.name }}', 
+                'unit': '{{ item.unit }}',
+                'price': {{ item.currentPrice }}
+            },
+        {% endfor %}
+            'item0' : {'name':'','unit':'','price':''}
+        };
+    {% endif %}
+    
+    var g_table_destination = '';
+    var g_table_destination_alias = '';
+    var g_table_source = '';
+    var g_order_id = '';
+
+    $(function() {
+        $(".select2-dmd").select2({
+            theme: "bootstrap",
+            width: "173px"
+        });
+        //load table information on right panel
+        $("a[href^='#table-alias-']").click(function() {
+            table_alias = $(this).attr("href").substring(13);//#table-alias
+            if(current_table_alias != '') {
+                $("div#h-table-"+current_table_alias).addClass('h-table-hide');
+            }
+            current_table_alias = table_alias;
+            $("div#h-table-"+current_table_alias).removeClass('h-table-hide')
+        });
+        
+        $("div#h-table-"+current_table_alias).removeClass('h-table-hide');
+        
+        $('table').on('click', '.clickable-row', function(event) {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+
+        $("#coffee-modal #modal-description-save").click(function(){
+            tinyMCE.triggerSave();
+            var desc = $("form[name='orderDescription'] #order_description").val();
+            var order_id = $("input[id='order_id']").val();
+            console.log(order_id);
+            $.ajax({url:"{{ url('dmd_coffee_table_orderdescription_save') }}",
+                type: "POST",
+                data: $("form[name='orderDescription']").serialize(),
+                success:function(result){
+                    if(result=='ok') {
+                        $("#coffee-modal").modal('hide');
+                        $("#description"+order_id).html(desc);
+                    } else {
+                        $("#coffee-modal .modal-body").html($("#coffee-modal .modal-body").html() + '<div>Error</div>');
+                    }
+            }});
+        });
+        $("#coffee-modal #modal-changetable-save").click(function(){
+            $.ajax({url:"{{ url('dmd_coffee_table_change') }}",
+                type: "POST",
+                data: {'table_source': g_table_source, 
+                    'table_destination': g_table_destination,
+                    'order': g_order_id
+                },
+                success:function(result){
+                    if(result!='error') {
+                        $("#coffee-modal").modal('hide');
+                        $("#loading-data").html("");
+                        console.log('current: '+current_table_alias);
+                        console.log('new: '+g_table_destination_alias);
+                        $("a[href='#table-alias-"+current_table_alias+"']").removeClass('btn-danger');
+                        $.get("/coffee/table/"+current_table_alias, function(data){
+                            $("#h-table-"+current_table_alias).html(data);
+                            $("#h-table-"+g_table_destination_alias).html(result);
+
+                            $("a[href='#table-alias-"+g_table_destination_alias+"']").addClass('btn-danger');
+                            showTable(g_table_destination_alias);
+                        });
+{#                        current_table_alias = g_table_destination_alias;#}
+                    } else {
+                        $("#coffee-modal .modal-body").html($("#coffee-modal .modal-body").html() + '<div>Error</div>');
+                    }
+                    $('#change-table-'+g_table_destination).removeClass('changeto-table');
+                    g_table_destination = '';
+            }});
+        });
+        $("#coffee-modal #modal-mergetable-save").click(function(){
+            $.ajax({url:"{{ url('dmd_coffee_table_merge') }}",
+                type: "POST",
+                data: {'table_source': g_table_source, 
+                    'table_destination': g_table_destination,
+                    'order': g_order_id
+                },
+                success:function(result){
+                    if(result!='error') {
+                        $("#coffee-modal").modal('hide');
+                        $("#loading-data").html("");
+                        console.log('current: '+current_table_alias);
+                        console.log('new: '+g_table_destination_alias);
+                        $("a[href='#table-alias-"+current_table_alias+"']").removeClass('btn-danger');
+                        $.get("/coffee/table/"+current_table_alias, function(data){
+                            $("#h-table-"+current_table_alias).html(data);
+                            $("#h-table-"+g_table_destination_alias).html(result);
+
+                            $("a[href='#table-alias-"+g_table_destination_alias+"']").addClass('btn-danger');
+                            showTable(g_table_destination_alias);
+                        });
+{#                        current_table_alias = g_table_destination_alias;#}
+                    } else {
+                        $("#coffee-modal .modal-body").html($("#coffee-modal .modal-body").html() + '<div>Error</div>');
+                    }
+                    $('#change-table-'+g_table_destination).removeClass('changeto-table');
+                    g_table_destination = '';
+            }});
+        });
+
+    });
+    
+    function print(order_id)
+    {
+        mode = "iframe";//iframe or popup
+        close = false;
+        $(".info-print").css('display','block');
+
+        $.ajax({url:"{{ url('dmd_coffee_table_orderprinted_save') }}",
+                type: "POST",
+                data: {'order_id': order_id, 'order_content': $("#printorder"+order_id+" table").html() },
+                success:function(result){
+               
+            }});
+
+        var options = { mode : mode, popClose : close};
+        $("#printorder"+order_id).printArea(options);
+        saveOrder(order_id,current_table_alias);                    
+        $(".info-print").hide();
+    }
+
+    function adddescription(order_id, table_name)
+    {
+        var options = {};
+        $("#coffee-modal .btn-save").hide();
+        $("#modal-description-save").show();
+        $("#coffee-modal #coffeeModalLabel").html('Mô tả cho '+ table_name);
+        $("#coffee-modal .modal-body").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+        
+        $.ajax({url:"{{ url('dmd_coffee_table_orderdescription_add') }}",
+                type: "POST",
+                data: {'order_id': order_id },
+                success:function(result){
+                    $("#coffee-modal .modal-body").html(result);
+            }});
+        $("#coffee-modal").modal(options);
+    }
+
+    function saveOrder(order_id, table_alias)
+    {
+        $("#loading-data").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+        $.ajax({url:"{{ url('dmd_coffee_table_order_save') }}",
+                type: "POST",
+                data: { 'order_id': order_id },
+                success:function(result){
+                    $("#h-table-"+table_alias).html(result);
+                    $("#loading-data").html("");
+                    $("a[href='#table-alias-"+table_alias+"']").removeClass('btn-danger');
+            }});
+    }
+
+    function updateOrder(order_id)
+    {
+        item_id = $("form[name='order"+order_id+"'] select[name='item']").val();
+        eval('var unit = items.item'+item_id+'.unit');
+        eval('var price = items.item'+item_id+'.price');
+        $("form[name='order"+order_id+"'] div#orderUnit").html(''+unit);
+        $("form[name='order"+order_id+"'] div#orderPrice").html(''+price);
+        updateTotal(order_id);
+    }
+
+    function updateTotal(order_id)
+    {
+        price = parseInt($("form[name='order"+order_id+"'] div#orderPrice").html());
+        quantity = $("form[name='order"+order_id+"'] input[name='quantity']").val();
+        $("form[name='order"+order_id+"'] input[name='total']").val(price * quantity)
+    }
+    
+    function addOrder(order_id)
+    {
+        //send order detail to server
+        
+        item_id = $("form[name='order"+order_id+"'] select[name='item']").val();
+        quantity = $("form[name='order"+order_id+"'] input[name='quantity']").val();
+        
+        if((item_id != 0)&&!isNaN(parseFloat(item_id)) && isFinite(item_id)&&(quantity != 0)&&!isNaN(parseFloat(quantity)) && isFinite(quantity)) {
+            $(".loadingOrderDetail").show();
+            updateServer(order_id,item_id,quantity);
+        } else {
+            alert("Bạn phải nhập nội dung cho món và số lượng chính xác!");
+        }        
+    }
+    function updateServer(order_id,item_id,quantity) {
+        $.ajax({url:"{{ url('dmd_coffee_table_orderdetail_add') }}",
+            type: "POST",
+            data: {'order':order_id,'item':item_id,'quantity':quantity},
+            success:function(result){
+                $("form[name='order"+order_id+"'] .order-detail-temp").remove();
+                $("form[name='order"+order_id+"'] .order-detail-header").after(result);
+                $(".loadingOrderDetail").hide();
+                
+                $('.plus-minus-button'+order_id).removeAttr('disabled');
+        }});
+        $("form[name='order"+order_id+"']").each(function(){
+            this.reset();
+            $("form[name='order"+order_id+"'] select[name='item']").select2('val','');
+            $("form[name='order"+order_id+"'] select[name='item']").select2('focus');
+        });
+    }
+    function removeOrderDetail(order_id, orderDetailId)
+    {
+        $(".loadingOrderDetail").show();
+        
+        $.ajax({url:"{{ url('dmd_coffee_table_orderdetail_remove') }}",
+                type: "POST",
+                data: {'order_detail_id':orderDetailId},
+                success:function(result){
+                    $("form[name='order"+order_id+"'] .order-detail-temp").remove();
+                    $("form[name='order"+order_id+"'] .order-detail-header").after(result);
+                    $(".loadingOrderDetail").hide();
+            }});
+    }
+    
+    function changeTable(table_name, table_id, order_id)
+    {
+        g_table_source = table_id;
+        g_table_destination = '';
+        g_order_id = order_id;
+        var options = {};
+        $("#coffee-modal .btn-save").hide();
+        $(".change-table").show();
+        $(".btn-danger.change-table").hide();
+        $("#modal-changetable-save").show();
+        $("#coffee-modal #modal-header-title").html('Chuyển bàn '+ table_name);
+
+        $("#coffee-modal .modal-body").html($("#table-list-hidden").html());
+
+        $("#coffee-modal").modal(options);
+    }
+    function mergeTable(table_name, table_id, order_id)
+    {
+        g_table_source = table_id;
+        g_table_destination = '';
+        g_order_id = order_id;
+        var options = {};
+        $("#coffee-modal .btn-save").hide();
+        $(".change-table").hide();
+        $(".btn-danger.change-table").show();
+        $("#modal-mergetable-save").show();
+        $("#coffee-modal #modal-header-title").html('Chọn bàn để nhập từ '+ table_name);
+        $("#coffee-modal .modal-body").html($("#table-list-hidden").html());
+        $("#coffee-modal").modal(options);
+    }
+    function selectChangeTable(table_id,table_alias){
+        g_table_destination = table_id;
+        $(".change-table").removeClass('changeto-table');
+        $('#change-table-'+table_id).addClass('changeto-table');
+        g_table_destination_alias = table_alias;
+    }
+
+    function changeOneOrder(order_id, table_alias, val){
+        if($('.plus-minus-button'+order_id).attr('disabled')=='disabled'){
+            return 0;
+        }
+        //get orderdetail_id
+        act = $('form[name="order'+order_id+'"] .clickable-row.active');
+        if(act.length) {
+            orderdetail_id = act.attr('name').substring(10);
+            var quantity = parseInt(act.find('td[name="od_quantity"]').attr('value'));
+            if(val+quantity>0) {
+                //disable plus and minus button
+                $('.plus-minus-button'+order_id).attr('disabled', 'disabled');
+                //update page
+                var price = parseInt(act.find('td[name="od_price"]').attr('value'));
+                act.find('td[name="od_quantity"]').attr('value',(val+quantity));
+                act.find('td[name="od_quantity"]').html(numberWithCommas(val+quantity)); //update quantity
+                act.find('td[name="od_total"]').attr('value',(price*(val+quantity)));
+                act.find('td[name="od_total"]').html(numberWithCommas(price*(val+quantity))); //update total
+                var total_all = parseInt($('form[name="order'+order_id+'"]').find('i[name="od_total_all"]').attr('value'));
+                $('form[name="order'+order_id+'"]').find('i[name="od_total_all"]').attr('value',(total_all+price*val));
+                $('form[name="order'+order_id+'"]').find('i[name="od_total_all"]').html(numberWithCommas(total_all+price*val)); //update total_all in bill
+                
+                //update server
+                updateServer(order_id, $('form[name="order'+order_id+'"] .clickable-row.active').attr('item') ,val);
+            }
+        }
+    }
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+function checkAddOrder(order_id)
+    {
+        //alert(e.keyCode);
+    }
+    
+</script>
+<script charset="utf-8" type="text/javascript" src='{{ asset('/assets/js/jquery.PrintArea.js') }}'></script> 
+<script charset="utf-8" type="text/javascript" src='{{ asset('/assets/js/js.js') }}'></script> 
+{% endblock javascripts %}

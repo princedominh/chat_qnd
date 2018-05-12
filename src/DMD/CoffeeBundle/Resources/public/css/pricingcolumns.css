@@ -1,0 +1,119 @@
+.pricingTable {
+    margin: 30px 0;
+    clear: both;
+}
+.pricingTable .wrapper {
+    margin: 0 0 30px 0;
+    clear: both;
+    border: 1px solid #eee;
+    background: transparent;
+    padding: 0 10px 20px 10px;
+    -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.10);
+    -moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.10);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.pricingTable ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+.pricingTable .optionheader li:first-child {
+    margin-bottom: 0px
+}
+.pricingTable .optionheader li:last-child {
+    margin-bottom: 5px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+.features {
+    margin-bottom: 10px
+}
+.features li:last-child {
+    border: none
+}
+.features li {
+    padding: 0;
+    line-height: 40px;
+    height: 40px;
+}
+.lt-ie9 .features li {
+    border-bottom: 1px solid #ddd
+}
+.optionheader {
+    margin: 0
+}
+.features li.detailsPop {
+    line-height: 40px!important;
+    height: 40px;
+}
+.features li.detailsPop [class^="icon-"],
+.features li.detailsPop [class*=" icon-"] {
+    font-size: 22px;
+    color: #000;
+    position: relative;
+    top: 3px;
+}
+.features li.detailsPop:hover i {
+    color: #ccc
+}
+.price {
+    font-size: 50px;
+    font-weight: normal;
+    padding: 10px 0 20px 0;
+}
+.title {
+    font-size: 14px;
+    padding: 5px 0 0 0;
+    letter-spacing: 6px;
+    color: #888;
+    text-transform: uppercase;
+}
+.features li.select {
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+}
+.select .btn {
+    border: 0px;
+    position: relative;
+    top: -3px;
+    padding: 10px 30px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+.price {
+    line-height: 1.2
+}
+.price span {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+}
+.price i {
+    font-style: normal;
+    font-size: 14px;
+    vertical-align: super;
+}
+.features strong {
+    font-size: 1.8rem
+}
+/*COLORS*/
+.option1 .price,
+.option2 .price,
+.option3 .price,
+.option4 .price,
+.option1 .title,
+.option2 .title,
+.option3 .title,
+.option4 .title {
+    background: #b4b9bb;
+    color: #fff;
+}
+.optionheader .primary-color-bg {
+    background: #5676a5
+}

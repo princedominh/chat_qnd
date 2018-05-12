@@ -1,0 +1,87 @@
+#Page
+page:
+    label:
+        login: Đăng nhập
+        registration: Đăng ký tài khoản
+        resetpassword: Cài đặt lại mật khẩu
+
+form:
+    label:
+        submit_send: Gửi
+        submit_save: Lưu
+#Login form
+Username: "Tên tài khoản"
+Password: "Mật khẩu"
+Login: "Đăng nhập"
+Register: "Đăng ký"
+"Forgot password?": "Quên mật khẩu?"
+"Bad credentials": "Tài khoản không tồn tại"
+"The presented password is invalid.": "Mật khẩu không đúng"
+
+fos_user_registration_form_username: "Tên người dùng"
+fos_user_registration_form_email: "Email"
+fos_user_registration_form_plainPassword_first: "Mật khẩu"
+fos_user_registration_form_plainPassword_second: "Xác nhận mật khẩu"
+registration.submit: "Đăng ký"
+
+"Welcome!": "Kohi"
+"Contact us": "Liên hệ"
+"Read more": "Xem thêm"
+"Recent Products": "Các sản phẩm gần đây"
+
+header:
+    menu:
+        home: "Trang chủ"
+        3d: "Lắp ghép 3D"
+        all: "Tất cả sản phẩm"
+        contact: "Liên hệ"
+        connect: "Kết nối"
+        sign_in: "Đăng nhập"
+        book: "Thư viện sách"
+        all_book: "Tất cả sách"
+        book_cart: "Giỏ hàng"
+        cart_book: "Danh sách"
+        price: "Giá cho thuê"
+        total : "Tổng tiền"
+        delete: "Xóa"
+        check_out: "Kiểm tra"
+        empty: "Giỏ trống"
+        web: "Sản phẩm Web"
+        all_web: "Tất cả các web"
+
+
+
+cart:
+    check_out: "Kiểm tra giỏ hàng"
+    check_out_complete: "Đặt sách"
+
+
+#warning message
+"Warning!": "Thông báo"
+"This website is under construction": "Trang web đang trong thời gian xây dựng"
+"Coming soon!": "Sẽ sớm ra mắt"
+
+"Welcome DoHoang Solution!": "Hãy đến với Đỗ Hoàng Solution!"
+"Simple, Strong and Smart": "Đơn giản, mạnh mẽ & thông minh"
+"Say hello Dohoang.net": "Đỗ Hoàng luôn cung cấp cho khách hàng những ứng dụng đơn giản nhưng không kém phần tinh tế trong từng chi tiết. Xây dựng trên nền những nền tảng tiên tiến nhất, đem lại sức mạnh thực sự cho ứng dụng. Lựa chọn chúng tôi cho những sản phẩm hoàn hảo nhất. Đó là sự lựa chọn thông minh!"
+
+#recent products
+"Deal Dohoang.net description" : "Trang mua bán deal. Chuyên về thương mại điện tử, bán hàng trực tuyến với những tính năng tiên tến, phù hợp với thị trường Việt Nam."
+"Haxi.vn": "Haxi.vn - Sản phẩm cho bà mẹ, trẻ em"
+"Haxi.vn description": "Chuyên cung cấp các sản phẩm cho bà mẹ, trẻ em. Là trang thương mại điện tử, chấp nhận các hình thức thanh toán trực tuyến phổ biến tại Việt Nam như NgânLượng, BảoKim."
+"Moodle Quang Trung description": "Trang e-learning trường Đại học Quang Trung (phiên bản thử nghiệm. Trang này xây dựng trên hệ thống Moodle giúp sinh viên và giảng viên tương tác thông qua hệ thống. Hệ thống này bổ sung, nâng cao chất lượng đào tạo tại trường."
+"KOHI.VN description": "Hệ thống quán cafe KŌHĪ sử dụng tích hợp giải pháp của dohoang.net trong công tác quản lý bán hàng, đặt hàng. Phiên bản chính thức sẽ được áp dụng từ quý III-2013."
+
+
+"Professional Online Management": "Chuyên cung cấp các giải pháp quản lý trực tuyến"
+"Online Management description": "Giải pháp quản lý nhân sự, quản lý quán cà phê, karaoke hay quản lý nhà hàng, khách sạn,... Tất cả chỉ là một trình duyệt web và lựa chọn chúng tôi."
+"Pay monthly": "Miễn phí sử dụng các gói basic"
+
+"Upgarade to Professional Account": "Cập nhật lên tài khoản Professional"
+"Upgarade to Professional Account Now": "Cập nhật tài khoản Professional ngay bây giờ"
+"Professional Account": "Để có được những tính năng cao cấp"
+"Professional Account description1" : "Số lượng quản lý không hạn chế"
+"Professional Account description2" : "Văn phòng điện tử"
+"Professional Account description3" : "Thống kê thông minh và các chế độ cảnh báo"
+
+

@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks
+RewriteEngine On
+
+# Explicitly disable rewriting for front controllers
+RewriteRule ^/web/app_dev.php - [L]
+RewriteRule ^/web/app.php - [L]
+RewriteRule ^/web/config.php - [L]
+RewriteRule ^/web/info.php - [L]
+
+# Fix the bundles folder
+RewriteRule ^assets/(.*)$ /web/assets/$1  [QSA,L]
+RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+RewriteRule ^uploads/(.*)$ /web/uploads/$1 [QSA,L]
+RewriteRule ^robots.txt$ /web/robots.txt [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# Change below before deploying to production
+#RewriteRule ^(.*)$ /web/app.php [QSA,L]
+RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+
+
+</IfModule>
+
+Addtype image/svg svg
+

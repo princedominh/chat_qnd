@@ -1,0 +1,10 @@
+.select_date { width:  150px;}
+.btn { font-size: 18px}
+.tbl-coffee, .item-coffee { border: 1px solid #d9534f;}
+#right-panel { font-size: 16px;}
+.cf-quantity { width: 60px; }
+.cf-total { width: 80px; }
+.cf-dropdown { padding: 0px;}
+.cf-form-description label { display: block; }
+.changeto-table { border: 1px solid #ff0000; font-weight: bold; color: #333333; background-color: #E6E6E6; }
+.clickable-row.active {color: #ff6c00;}

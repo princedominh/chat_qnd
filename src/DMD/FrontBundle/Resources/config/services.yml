@@ -1,0 +1,27 @@
+parameters:
+    dmd_front.twig_extension.class: DMD\FrontBundle\Twig\DMDTwigFrontExtension
+    gedmo.softdeleteable.listener.class: Gedmo\SoftDeleteable\SoftDeleteableListener
+
+services:
+#    dmd_front.example:
+#        class: %dmd_front.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    doctrine.event_subscriber:
+        class: %gedmo.softdeleteable.listener.class%
+        tags:
+            - { name: doctrine.event_subscriber }
+        calls:
+            - [setAnnotationReader, ["@annotation_reader"]]        
+
+    dmd.twig.front_extension:
+        class: %dmd_front.twig_extension.class%
+        arguments: ["@service_container"]
+        tags:
+            - { name: twig.extension }
+    # Gedmo
+    gedmo.listener.tree:
+        class: Gedmo\Tree\TreeListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]

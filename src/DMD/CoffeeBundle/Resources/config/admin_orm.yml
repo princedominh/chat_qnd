@@ -1,0 +1,88 @@
+services:
+    dmd.coffee.category:
+        class: DMD\CoffeeBundle\Admin\Entity\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "category.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Category, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.item:
+        class: DMD\CoffeeBundle\Admin\Entity\ItemAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "item.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Item, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.item.price:
+        class: DMD\CoffeeBundle\Admin\Entity\ItemPriceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "price.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\ItemPrice, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.item.image:
+        class: DMD\CoffeeBundle\Admin\Entity\ItemImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "image.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\ItemImage, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+
+    dmd.coffee.area:
+        class: DMD\CoffeeBundle\Admin\Entity\AreaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "area.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Area, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.table:
+        class: DMD\CoffeeBundle\Admin\Entity\TableAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Coffee, label: "table.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Table, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+
+    dmd.coffee.material:
+        class: DMD\CoffeeBundle\Admin\Entity\MaterialAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "material.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Material, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.unit:
+        class: DMD\CoffeeBundle\Admin\Entity\UnitAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "unit.label.label" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Unit, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.unitreference:
+        class: DMD\CoffeeBundle\Admin\Entity\UnitReferenceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "unit.label.reference" }
+        arguments: [null, DMD\CoffeeBundle\Entity\UnitReference, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.recipe:
+        class: DMD\CoffeeBundle\Admin\Entity\RecipeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "coffee.label.recipe" }
+        arguments: [null, DMD\CoffeeBundle\Entity\Recipe, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+    dmd.coffee.recipeprice:
+        class: DMD\CoffeeBundle\Admin\Entity\RecipePriceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "coffee.label.recipeprice" }
+        arguments: [null, DMD\CoffeeBundle\Entity\RecipePrice, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]
+
+    dmd.coffee.inventory_receiving_voucher:
+        class: DMD\CoffeeBundle\Admin\Entity\InventoryReceivingVoucherAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Material, label: "inventory.label.receiving_voucher" }
+        arguments: [null, DMD\CoffeeBundle\Entity\InventoryReceivingVoucher, null ]
+        calls:
+            - [setTranslationDomain, [DMDCoffeeBundle]]

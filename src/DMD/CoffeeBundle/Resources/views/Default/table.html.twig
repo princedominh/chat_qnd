@@ -1,0 +1,26 @@
+<h3>{{ table.name }}</h3>
+{% if order is null %}
+    <button class="btn btn-primary" id="table-order-{{ table.alias }}">{% trans from "DMDCoffeeBundle" %}Tạo đặt bàn{% endtrans %}</button>
+    <div class="table-order-{{ table.alias }}">
+    </div>
+{% else %}
+    {% include 'DMDCoffeeBundle:Default:order.html.twig' %}
+{% endif %}
+<script type="text/javascript">
+    $(function(){
+        $("button[id='table-order-{{ table.alias }}']").click(function() {
+            $("#loading-data").html("<img src=\"{{ asset('/assets/images/loading.gif') }}\" />");
+            $("div.table-order-{{ table.alias }}").load(
+                '{{ path('dmd_coffee_table_order_create',{'table_alias':table.alias}) }}',
+                function() {
+                    $("button[id='table-order-{{ table.alias }}']").hide();
+                    $("#loading-data").html("");
+                    $("a[href='#table-alias-{{ table.alias }}']").addClass('btn-danger');
+                    $('table').on('click', '.clickable-row', function(event) {
+                        $(this).addClass('active').siblings().removeClass('active');
+                    });
+                }
+            );
+        });
+    });
+</script>

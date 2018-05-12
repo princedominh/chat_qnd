@@ -1,0 +1,227 @@
+/*================================================ 
+/* ## lemmon slider classes before media queries
+================================================== */
+.lemmon-wrap,
+.lemmon-wrap .prev-page,
+.lemmon-wrap .next-page,
+.lemmon-slider li div {
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -o-transition: all .6s ease;
+}
+.lemmon-wrap {
+    position: relative;
+    margin: -40px 0 0 0;
+    padding: 0;
+    clear: both;
+}
+.lemmon-slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    left: -1px;
+    margin: 0 auto;
+}
+.no-js .lemmon-slider {
+    overflow: hidden;
+    width: 100000px;
+}
+.lemmon-slider,
+.lemmon-slider li,
+.lemmon-slider img {
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -o-transition: all .6s ease;
+}
+.lemmon-slider ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.lemmon-slider li {
+    float: left;
+    list-style: none;
+    position: relative;
+    margin: 0 1px;
+}
+.no-js .lemmon-slider li {
+    float: left;
+    display: block;
+    text-align: center;
+}
+.no-js .lemmon-slider ul {
+    margin: 0 auto
+}
+/*================================================ 
+/* ## captions before media queries
+================================================== */
+.lemmon-slider li div.summary {
+    position: absolute;
+    background: url(../images/80p.png);
+    color: #fff;
+    opacity: 0;
+    z-index: 100;
+    display: block;
+    left: 0;
+    right: 0;
+    top: -500px;
+    padding: 10px;
+    text-align: center;
+}
+.lemmon-slider li div.summary * {
+    color: #fff
+}
+.lemmon-slider li:hover div.summary {
+    opacity: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.no-js .lemmon-slider li div.summary,
+.no-js .lemmon-slider li:hover div.summary {
+	display: none;
+}
+.lemmon-slider li div.summary a {
+    text-decoration: none
+}
+.lemmon-slider li div.summary p {
+    font-size: 14px;
+    padding: 0 15%;
+    position: relative;
+}
+/*================================================ 
+/* ## controls
+================================================== */
+.lemmon-wrap .controls {
+    text-align: center;
+    margin-top: 10px;
+}
+.lemmon-wrap .prev-page,
+.lemmon-wrap .next-page {
+    cursor: pointer;
+    position: relative;
+    z-index: 200;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 25px;
+    height: 25px;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 0 5px;
+    color: #fff;
+    background: #333;
+    text-align: center;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+.lemmon-wrap .next-page i {
+    position: relative;
+    left: 1px;
+    top: 1px;
+}
+.lemmon-wrap .prev-page i {
+    position: relative;
+    left: -1px;
+    top: 1px;
+}
+.lemmon-wrap .next-page:hover,
+.lemmon-wrap .prev-page:hover {
+    opacity: .5
+}
+/* no javascript fallback*/
+.no-js .prev-page,
+.no-js .next-page {
+    display: none
+}
+/* ie sucks */
+.lt-ie9 .lemmon-slider,
+.lt-ie9 .lemmon-slider,
+.lt-ie9 .lemmon-slider img {
+    height: 300px
+}
+/*================================================ 
+    ## media queries mobile up, I am not changing this as I have classes to cover IE
+================================================== */
+@media only screen and (max-width:320px) { 
+	/* height of slider on mobile */
+	.lemmon-slider,
+	.lemmon-slider img {
+	    height: 125px
+	}
+	/* hides the hover captions on mobile */
+	.lemmon-slider li div.summary,
+	.lemmon-slider li:hover div.summary {
+	    display: none
+	}
+}
+@media only screen and (min-width: 321px) and (max-width:767px) { 
+	.lemmon-slider,
+	.lemmon-slider img {
+	    height: 175px
+	}
+	.lemmon-slider li div,
+	.lemmon-slider li:hover div {
+	    display: none!important
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) { 
+	.lemmon-slider,
+	.lemmon-slider img {
+	    height: 250px
+	}
+	.lemmon-slider li div p,
+	.lemmon-slider li:hover div p {
+	    display: none
+	}
+}
+@media only screen and (min-width: 980px) { 
+	.lemmon-slider li p,
+	.lemmon-slider li:hover p {
+	    display: block
+	}
+	/* height of slider on desktop */
+	.lemmon-slider,
+	.lemmon-slider img {
+	    height: 300px
+	}
+}
+@media only screen and (min-width: 1100px) { 
+	.lemmon-slider li p,
+	.lemmon-slider li:hover p {
+	    display: block
+	}
+	/* height of slider on desktop */
+	.lemmon-slider,
+	.lemmon-slider img {
+	    height: 350px
+	}
+}
+@media only screen and (max-width: 767px) { 
+	.lemmon-wrap {
+	    margin: 0 0 3% 0
+	}
+}
+
+
+/* hacks for IE and Firefox at Fullscreen sizes*/
+
+@media only screen and (min-width: 2000px) {
+	:root .lemmon-wrap {
+		margin-left:auto \0/IE9;
+		margin-right:auto \0/IE9;
+		max-width: 2500px \0/IE9;
+	}
+}
+
+@-moz-document url-prefix() {    
+    .lemmon-wrap {
+        margin-left:auto;
+        margin-right:auto;
+        max-width:2500px;
+    }
+}
+

@@ -1,0 +1,9 @@
+"Bad credentials.": "Sai thông tin đăng nhập."
+
+security:
+    login:
+        username: "Tài khoản"
+        password: "Mật khẩu"
+        remember_me: "Duy trì đăng nhập"
+        submit: "Đăng nhập"
+        

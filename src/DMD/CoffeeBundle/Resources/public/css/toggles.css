@@ -1,0 +1,148 @@
+/*--------------------------- bootstrap data collapse---------------------- */
+.accordion-heading h3 { margin: 0 }
+.accordion-heading a { text-decoration: none }
+.accordion-body,
+.accordion-inner,
+.accordion-heading,
+.accordion-group {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 0px;
+}
+.accordion-heading {
+    background: #f8f8f8;
+    border: 0px;
+    -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+}
+.accordion-group .accordion-heading .active i:before { content: "\e764" }
+.accordion-group .active { color: #aaa }
+.accordion-group { padding: 0 0 10px 0!important }
+.accordion-group .accordion-heading i { padding-right: 20px }
+.accordion-body {
+	-webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+}
+.accordion > .accordion-group:nth-child(even) > .accordion-heading > h3 > .accordion-toggle{
+	background: #eee;
+}
+.no-js .accordion > div.accordion-group > .accordion-body.collapse {
+    overflow: visible!important;
+    display: block!important;
+    visibility:visible!important;
+    height: auto!important;
+}
+/*--------------------------- slide to top accordion toggle  (slide-to-top-accordion.js)  ---------------------- */
+
+.slide-to-top .trigger i {
+    position: absolute;
+    right: 10px;
+}
+.no-js li.st-content-wrapper {
+    overflow: visible!important;
+    height: auto!important;
+}
+.no-js li.st-content-wrapper .st-content {
+    display: block!important;
+    clear: both!important;
+    visibility: visible!important;
+    overflow: visible!important;
+}
+.slide-to-top .st-open .trigger i:before { content: "\e764" }
+.slide-to-top {
+    width: 100%;
+    margin-bottom: 4%;
+}
+.slide-to-top ul.accordion-st-wrapper {
+    width: 100%;
+    padding: 0;
+    min-width:230px;
+    margin: 0;
+}
+li.st-content-wrapper {
+    height: 49px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+}
+li.st-content-wrapper .trigger {
+    font-size: 18px;
+    display: block;
+    position: relative;
+    line-height: 50px;
+    padding: 0 10px;
+    background: #f8f8f8;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+li.st-content-wrapper .trigger h4 { line-height: 50px;margin:0; }
+li.st-content-wrapper:nth-child(even) .trigger { background: #eee }
+li.st-content-wrapper .st-content { padding: 2% 3% 3% }
+.slide-to-top .st-open .trigger {
+    -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+    color: #aaa;
+}
+.accordion-st-wrapper ul,
+.accordion-st-wrapper ol { margin-bottom: 2% }
+.accordion-st-wrapper ul { list-style: square }
+.accordion-st-wrapper ul ul,
+.accordion-st-wrapper ol ol,
+.accordion-st-wrapper ul ol,
+.accordion-st-wrapper ol ul { margin-bottom: 0 }
+.accordion-st-wrapper ul,
+.s-accordion ul { list-style: square }
+
+/*--------------------------- media queries ---------------------- */
+
+
+@media only screen and (max-width: 767px) { 
+	li.st-content-wrapper { height: 30px }
+	li.st-content-wrapper a.trigger {
+	    font-size: 20px;
+	    line-height: 30px;
+	}
+	li.st-content-wrapper .trigger h4 { line-height: 30px;margin:0; }
+
+}
+/**/
+
+@media only screen and (max-width: 400px) { 
+	li.st-content-wrapper { height: 30px }
+	li.st-content-wrapper a.trigger {
+	    font-size: 16px;
+	    line-height: 30px;
+	}
+}
+
+/*--------------------------- print ---------------------- */
+
+@media print { 
+	li.st-content-wrapper {
+	    overflow: visible!important;
+	    height: auto!important;
+	}
+	li.st-content-wrapper .st-content {
+	    display: block!important;
+	    clear: both!important;
+	    visibility: visible!important;
+	    overflow: visible!important;
+	}
+	.accordion > div.accordion-group > .accordion-body.collapse {
+  	  overflow: visible!important;
+ 	   display: block!important;
+ 	   visibility:visible!important;
+ 	   height: auto!important;
+	}
+}
+
+/*end print*/

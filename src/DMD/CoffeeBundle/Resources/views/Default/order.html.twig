@@ -1,0 +1,142 @@
+<div class="table-menu">
+<i>{{ order.createdAt | date('H:i d-m-Y') }}</i>
+<div class="order-buttons" >
+    <a class="btn btn-primary printorder{{ order.id }}" onclick="print({{ order.id }})"><i class="fa fa-print"></i> In hoá đơn</a>
+    <a class="btn btn-danger" onclick="saveOrder({{ order.id }},'{{ table.alias }}')"><i class="fa fa-floppy-o"></i> Hoàn tất</a>
+    <a class="btn btn-danger plus-minus-button{{ order.id }}" onclick="changeOneOrder({{ order.id }},'{{ table.alias }}',1)"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <a class="btn btn-danger plus-minus-button{{ order.id }}" onclick="changeOneOrder({{ order.id }},'{{ table.alias }}',-1)"><i class="fa fa-minus" aria-hidden="true"></i></a>
+</div>
+    <div class="btn-group order-buttons">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-pencil-square-o"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="descriptionorder{{ order.id }}" onclick="adddescription({{ order.id }},'{{ table.name }}')">Thêm mô tả</a></li>
+            <li><a onclick="changeTable('{{ table.name }}',{{ table.id }},{{ order.id }})">Chuyển bàn</a></li>
+            <li><a onclick="mergeTable('{{ table.name }}',{{ table.id }},{{ order.id }})">Nhập bàn</a></li>
+{#            <li><a onclick="">Tách bàn</a></li>#}
+        </ul>
+    </div>
+</div>
+<div id="printorder{{ order.id }}" class="special-kohi">
+    <div class="info-print">
+{#        <img src="{{ asset('/assets/images/logo.png') }}" style="height: 30px" />#}
+        <h3 style="text-align: center; font-weight: bold;">PHIẾU TÍNH TIỀN</h3>
+        <div style="float:left"><b>{{ table.name}} </b></div> <div style="float:right"><i>{{ order.createdAt | date('H:i d-m-Y') }}</i></div>
+    </div>
+    <div style="clear: both">
+        <form name="order{{ order.id }}" action="#">
+            <table class="table table-hover" >
+                <tr class="order-detail-header">
+                    <th class="unprint">STT</th>
+                    <th>Tên món</th>
+                    {#<th>ĐVT</th>#}
+                    <th style="text-align: right">SL</th>
+                    <th style="text-align: right">Đơn giá</th>
+                    <th style="text-align: right">Thành tiền</th>
+                    <th class="unprint">..</th>
+                </tr>
+                {% set billTotal = 0 %}
+                {% for orderDetail in order.orderDetails %}
+                <tr class="order-detail-temp clickable-row" name="orderdetail{{orderDetail.id}}" item="{{ orderDetail.item.id }}">
+                    <td class="unprint">{{ loop.index }}</th>
+                    <td>{{ orderDetail.item.name }}</td>
+                    {#<td>{{ orderDetail.item.unit }}</td>#}
+                    <td style="text-align: right" name="od_quantity" value="{{ orderDetail.quantity }}">{{ orderDetail.quantity }}</td>
+                    <td style="text-align: right" name="od_price" value="{{ orderDetail.price }}">{{ orderDetail.price|number_format(0, ',', '.') }}</td>
+                    <td style="text-align: right" name="od_total" value="{{ orderDetail.total }}">{{ orderDetail.total|number_format(0, ',', '.') }}</td>
+                    <td class="unprint">
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle cf-dropdown" data-toggle="dropdown" href="#">
+                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a onclick="removeOrderDetail({{ order.id }},{{orderDetail.id}})">Xoá <i class="icon-remove"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                    {% set billTotal = billTotal + orderDetail.total %}
+                {% endfor %}
+                <tr class="order-detail-temp">
+                    <td colspan="5" style="text-align: right">
+                        <a class="alert{{ order.id }}"></a>
+                        <b><i name="od_total_all" value="{{billTotal}}">{{ billTotal|number_format(0, ',', '.') }}</i></b>
+                    </td>
+                    <td class="unprint"></td>
+                </tr>
+                <tr class="unprint">
+                    <td></td>
+                    <td>
+                        <select class="input-mini form-control select2-dmd" name="item" onchange="updateOrder({{ order.id }})">
+                            <option value="0"></option>
+                            {% set category_name = '' %}
+                            {% set first_group = 1 %}
+                            {% if items is defined %}
+                                {% for item in items %}
+                                    {% if category_name!= item.category.name %}
+                                            {% set category_name = item.category.name %}
+                                            {% if first_group != 1 %}
+                                {{ '</optgroup>' }}
+                                            {% endif %}
+                                <optgroup label="{{ category_name }}">
+                                    {% endif %}
+                                    <option value="{{ item.id }}">{{ item.name }}</option>
+                                    
+                                    {% if loop.last %}
+                                {{ '</optgroup>' }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </td>
+                    {#<td>
+                        <div id="orderUnit"></div>
+                    </td>#}
+                    <td style="text-align: right">
+                        <input type="number" value="1" step="any" name="quantity" class="input-mini form-control cf-quantity" onchange="updateTotal({{ order.id }})"/>
+                    </td>
+                    <td style="text-align: right">
+                        <div id="orderPrice"></div>
+                    </td>
+                    <td style="text-align: right">
+                        <input type="text" name="total" readonly="readonly" class="input-mini form-control cf-total" />
+                    </td>
+                    <td><i class="loadingOrderDetail"><img src="{{ asset('/assets/images/loading.gif') }}" /></i></td>
+                </tr>
+                <tr class="unprint">
+                    <td colspan="7" style="text-align: right">
+                        <button class="btn btn-primary">Thêm vào</button>
+                    </td>
+                </tr>
+            </table>
+                <div id="div{{ order.id }}"></div>
+        </form>
+    </div>
+    <div class="info-print">
+        <div style="text-align: center;"><i>Xin chân thành cảm ơn Quý khách!<br/>
+            Rất mong được gặp lại!</i>
+        </div>
+    </div>
+</div>
+<div id="description{{ order.id }}">{{ order.description|raw }}</div>
+{% if items is defined %}
+<script type="text/javascript">
+    $(function(){
+                $(".select2-dmd").select2({
+            theme: "bootstrap",
+            width: "173px"
+        });
+
+        document.order{{ order.id }}.reset();
+        
+        $("form[name=order{{ order.id }}]").on('submit', function(e) {
+            e.preventDefault();
+            addOrder({{ order.id }});
+        });
+    });
+    
+</script>
+{% endif %}

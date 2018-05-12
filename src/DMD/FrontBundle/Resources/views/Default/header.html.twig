@@ -1,0 +1,252 @@
+<!--[if lt IE 7]>
+<p class="chromeframe">Your browser is over 12 years old. You are using an <strong>outdated</strong> browser. Please <a href="http://www.google.com/chrome/intl/en/landing_chrome.html">upgrade your browser</a>.</p>
+<![endif]--> 
+
+<!-- begin accesibility skip to nav skip content -->
+<ul class="visuallyhidden" id="top">
+    <li><a href="#nav" title="Skip to navigation" accesskey="n">Skip to navigation</a></li>
+    <li><a href="#page" title="Skip to content" accesskey="c">Skip to content</a></li>
+</ul>
+
+<!-- begin .header-->
+<header class="header clearfix">
+
+
+    <!-- mobile navigation trigger-->
+    <h5 class="mobile_nav"><a href="javascript:void(0)">&nbsp;<span></span> </a> </h5>
+
+    <!--******this uses the bootstrap navbar menus but with added support for submenus (they are dropping these in 3.0 and their support in 2X was crap).
+    I modified the JS, added some script, and adjusted the css.
+    I commented and separeated the html so you can apply it to your site/menu system easier. Note the additional classes for this theme.
+    *******-->
+    <div id="nav">
+        <!--accesibility-->
+        <div class="navbar secondary-menu">
+            <div class="container">
+
+                <div class="navbar-inner">
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav accordmobile pull-right"><!--accordmobile comes in when the browser is at 979px and below, it fixes bugs with bootstrap's toggles of multiple level dropdowns which they are dropping support for and they had lousy support in 2x-->
+                            <!--
+                            <li><a href="register.html">Register <i class="e-icon-pencil"></i></a></li>
+                            -->
+                            <!--begin .dropdown .parent -->
+
+                            {#
+                            <li class="dropdown parent"> <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ 'Login'| trans({},'DMDFrontBundle')}}<i class="e-icon-login"></i></a>
+                                <ul class="dropdown-menu signin"><!--begin .dropdown-menu .signin -->
+
+                                    <li><!--begin list item / everything goes inside the list item-->
+                                        <form><!--begin form add your stuff -->
+                                            <input type="text" placeholder="Email">
+                                            <input type="password" placeholder="Password">
+                                            <label class="checkbox">
+                                                <input type="checkbox">
+                                                Nhớ đăng nhập </label>
+                                            <button type="submit" class="btn custom-btn btn-primary">{{ 'Login'| trans({},'DMDFrontBundle')}}</button>
+                                        </form>
+                                    </li><!--end list item-->
+
+                                    <li class="divider"></li><!--divider -->
+
+                                    <li class="nav-header">Hoặc đăng nhập qua...</li><!--nav-header -->
+
+                                    <li>
+                                        <div class="social clearfix">
+                                            <a class="fc-webicon facebook large round" href="https://www.facebook.com" title="Facebook"></a>
+                                            <a class="fc-webicon twitter large round" href="#" title="Twitter"></a>
+                                            <a class="fc-webicon googleplus large round" href="#" title="Google"></a>
+                                        </div></li>
+
+                                    <li class="divider"></li><!--divider -->
+
+                                    <li><a href="forgot-password.html">{{ 'Forgot password?'  | trans({}, 'DMDFrontBundle')}}</a></li>
+
+                                </ul><!--close .dropdown-menu .signin -->
+                            </li><!--close .dropdown .parent -->
+                            #}
+                            
+                             <!-- /////////////  BEGIN CART /////////////////////// -->
+                            {#
+                            <li class="dropdown parent"> <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ 'header.menu.book_cart' | trans({}, 'DMDFrontBundle')}}
+                                    <span class="cartCount sel">
+                                        0
+                                    </span> &rarr; <i class="icon-shopping-cart"></i> = <span class="total">000.000</span>
+                                    </a>
+                                <ul class="dropdown-menu"> <!--begin .dropdown-menu --> 
+                                    <li>
+                                        <div id="left_bar"> 
+                                                    <div class="cart-info">
+                                                        <table class=" list_book_cart order-list" id="tb">
+
+                                                        <tbody>
+                                                                <thead> 
+                                                                <tr> 
+                                                                    <th> Tên </th><th> Giá </th> 
+                                                                    <th> Số lượng </th><th> Hành động </th> 
+                                                                </tr> 
+                                                            </thead> 
+                                                        </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="cart-total bg-warning empty"
+                                                     style="background:#f2dede;color:#000; padding:0px 2px 0px 0px 2px;">Giỏ hàng của bạn đang trống
+                                                    </div>
+                                                    <div class="cart-total">
+                                                    
+                                                    <b style="color:#000;">Tổng tiền:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><span class="badge" style="background:orange; margin-left:10px;">0 </span><b style="color:#000;" >VND</b>
+                                                        
+                                                        <input type="hidden" name="total-hidden-charges" id="total-hidden-charges" value="0" />
+                                                    </div>
+                                                </div> 
+
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <div class="button_cart1 wraper_delete_all">
+                                            <button class="btn btn-danger btn-delete-all" id="delete-all" type="button">{{ 'header.menu.empty' | trans({},'DMDFrontBundle')}}</button>
+
+                                        </div>
+                                        <div class="button_cart1 wraper_checkout">
+                                        <a href="{{url('dmd_front_checkout')}}"><button class="btn btn-success" id="btn-checkout" type="submit">{{ 'header.menu.check_out' | trans({},'DMDFrontBundle')}}</button></a>
+
+                                        </div>
+
+                                    </li>
+                         </ul>
+
+
+                            </li>
+                            #}
+                            <!-- //////////////////  END CART /////////////////////// -->
+                            <!--begin .dropdown .parent -->
+                            <li class="dropdown parent"> <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ 'header.menu.connect' | trans({}, 'DMDFrontBundle')}}<i class="e-icon-comment"></i></a>
+                                <ul class="dropdown-menu"> <!--begin .dropdown-menu -->
+
+                                    <li class="visible-phone visible-tablet phonenumber"><a href="tel:+84905778292">0905.778.292</a></li>
+                                    <!-- show this number only on phones and tablets -->
+
+                                    <li class="menu-text visible-desktop phonenumber">0905.778.292</li>
+                                    <li class="menu-text visible-desktop phonenumber">0935.028.018</li>
+                                    <li class="menu-text visible-desktop phonenumber">0163.998.4477</li>
+                                    <!-- show this number only on desktop -->
+
+                                    <li><a href="mailto:contact@kohi.vn">email: contact@kohi.vn</a></li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="nav-header">Đăng ký để nhận những thông tin mới!</li>
+
+                                    <li>
+                                        {% render(controller('DMDFrontBundle:Default:subscribeForm')) %}
+                                    </li>
+
+                                    <li class="divider"></li><!--divider -->
+
+                                    <li class="nav-header">Thông tin mạng xã hội</li><!--nav-header -->
+
+                                    <li>
+                                        <div class="social clearfix">
+                                            <a class="fc-webicon rss round" href="#" title="RSS"></a>
+                                            <a class="fc-webicon facebook round" href="https://www.facebook.com/kohi.vn" target="_blank" title="Facebook"></a>
+                                            <a class="fc-webicon skype round" href="skype:princedominh?chat" title="Skype"></a>
+                                        </div><!-- close div .social-->
+                                    </li>
+
+
+                                </ul>
+                            </li><!--close .dropdown .parent -->
+
+
+                            <!--begin .dropdown .parent -->
+                            <!--
+                            <li class="dropdown parent"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="e-icon-cog"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="current-user"> <a href="#"> <img class="avatar" src="https://twimg0-a.akamaihd.net/profile_images/568222624/ILUSWEETC_normal.jpg" alt="Christina Arasmo">
+                                            <div class="name">
+                                                <b class="fullname">User Name Goes Here</b><br>
+                                                <small> Edit profile </small>
+                                            </div>
+                                        </a> </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Link Here</a></li>
+                                    <li><a href="#">Line Here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li> <a class="js-signout-button" href="#" data-nav="logout">Sign out</a>
+                                        <form class="dropdown-link-form signout-form" id="signout-form" action="/logout" method="POST">
+                                            <input type="hidden" value="" name="" class="">
+                                            <input type="hidden" name="" class="">
+                                            <input type="hidden" name="">
+                                        </form></li>
+                                </ul><!--close .dropdown-menu -->
+                            <!--</li>close .dropdown .parent -->
+
+                            <li class="divider-vertical"></li>
+
+                            <li class="search-wrapper">
+                                {% render(controller('DMDFrontBundle:Default:searchForm',{'request': app.request})) %}
+                            </li>
+                        </ul><!-- close nav accordmobile-->
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.navbar-inner -->
+            </div>
+            <!--/.container -->
+        </div>
+        <!-- /.navbar --> 
+
+        <div class="container">
+
+            <div class="navbar primary-menu">
+                <div class="navbar-inner">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav accordmobile">
+                            <li><a href="{{ url('_welcome') }}">{{ 'header.menu.home' | trans({}, 'DMDFrontBundle')}}</a></li>
+                            {#
+                            <li class="dropdown parent">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{ 'header.menu.3d' | trans({}, 'DMDFrontBundle')}} <i class="e-icon-down-open-mini"></i></a>
+                                <ul class="dropdown-menu">
+                                    {% render(controller('DMDProductBundle:Category:menu')) %}
+                                </ul></li>
+                                #}
+                            <li class="dropdown parent">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{ 'header.menu.book' | trans({}, 'DMDFrontBundle')}} <i class="e-icon-down-open-mini"></i></a>
+                                <ul class="dropdown-menu">
+                                    {% render(controller('DMDBookBundle:CategoryBook:menubook')) %}
+                                </ul></li>
+
+                                 <li class="dropdown parent">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{ 'header.menu.web' | trans({}, 'DMDFrontBundle')}} <i class="e-icon-down-open-mini"></i></a>
+                                <ul class="dropdown-menu">
+                                    {% render(controller('DMDWebBundle:CategoryWeb:menuweb')) %}
+                                </ul></li>
+
+                            <li><a href="{{ url('dmd_front_contact') }}">{{ 'header.menu.contact' | trans({}, 'DMDFrontBundle')}}</a></li>
+
+
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.navbar-inner -->
+            </div>
+            <!-- /.navbar --> 
+
+            <div id="logo">
+                <a href="{{ url('_welcome') }}"></a>
+                <img src="{{ asset('/assets/images/logo.png') }}" alt="KOHI Ltd Company"/><!--.no-svg fallback-->
+            </div> 
+            <!-- end #logo --> 
+            <!-- ******* print stuff --><div class="print">Phone, name of company etc., for printing</div>
+        </div>
+        <!-- /.container --> 
+    </div>
+    <!--close #nav-->
+   
+</header><!-- close /.header --> 

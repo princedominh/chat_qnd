@@ -1,0 +1,32 @@
+<h4>Công thức các nguyên liệu của <i>{{ item.name }}</i></h4>
+<table class="table table-hover">
+        <tr>
+            <th>TT</th>
+            <th>Nguyên liệu</th>
+            <th>Đơn vị</th>
+            <th style="text-align: right;">Số lượng</th>
+            <th style="text-align: right;">Đơn giá ước tính</th>
+        </tr>
+        {% set allTotal = 0 %}
+        {% for recipe in item.recipes %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ recipe.material.name }}</td>
+            <td>{{ recipe.unit.name }}</td>
+            <td style="text-align: right;">{{ recipe.quantity }}</td>  
+            <td style="text-align: right;">{{ recipe.currentPrice |number_format(0, ',', '.') }}</td>  
+        </tr>
+        {% set allTotal = allTotal + recipe.currentPrice %}
+        {% endfor %}
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th style="text-align: right;">&nbsp;</th>
+            <th style="text-align: right;">{{ allTotal |number_format(0, ',', '.') }}</th>
+        </tr>
+</table>
+<p>Giá tạm tính hiện tại: {{ item.currentCost }} vnđ</p>
+{% if item.currentCost != allTotal %}
+    <p><button class="btn btn-danger" onclick="updatePrice({{ item.id }}, {{ allTotal}})">Cập nhật giá tạm tính như trên</button></p>
+{% endif %}

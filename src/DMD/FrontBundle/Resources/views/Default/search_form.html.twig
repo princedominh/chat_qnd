@@ -1,0 +1,22 @@
+{% set class = 'class=""' %}
+{% if form.key.vars.value != '' %}
+    {% set class = 'class="active"' %}
+    {% set property = {'style': 'display: inline;'}%}
+{% else %}
+    {% set property = {'style': 'display: none;'}%}
+{% endif %}
+
+<form action="{{ url('dmd_book_search')}}" method="get">
+    {{ form_widget(form._token) }}
+    <div id="search-trigger" {{ class }}>
+        <i class="e-icon-search"></i>
+    </div>
+    {{ form_widget(form.key, 
+            {'attr': {
+                'placeholder': 'search + enter', 
+                'type': 'text',
+                }|merge(property)
+            }
+        )
+    }}
+</form><!--close input-append--> 

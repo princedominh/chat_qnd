@@ -1,0 +1,13 @@
+label_type_equals: "Bằng"
+label_type_not_equals: "Không bằng"
+link_add: "Thêm"
+
+security:
+    login:
+        username: "Tài khoản"
+        password: "Mật khẩu"
+        remember_me: "Duy trì đăng nhập"
+        submit: "Đăng nhập"
+        label_type_equals: "Bằng"
+
+        

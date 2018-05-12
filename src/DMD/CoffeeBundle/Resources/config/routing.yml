@@ -1,0 +1,49 @@
+dmd_coffee_index:
+    path:  /coffee
+    defaults: { _controller: DMDCoffeeBundle:Default:index }
+
+dmd_coffee_analysis:
+    path:  /coffee/analysis
+    defaults: { _controller: DMDCoffeeBundle:Analysis:index }
+dmd_coffee_quantitative:
+    path:  /coffee/quantitative
+    defaults: { _controller: DMDCoffeeBundle:Analysis:quantitative }
+dmd_coffee_updatecost:
+    path:  /coffee/updatecost
+    defaults: { _controller: DMDCoffeeBundle:Analysis:updateCost }
+
+dmd_coffee_orderdetail:
+    path:  /coffee/order/{order_id}
+    defaults: { _controller: DMDCoffeeBundle:Order:detail }
+
+#ajax call
+dmd_coffee_table_order:
+    path:  /coffee/table/{table_alias}
+    defaults: { _controller: DMDCoffeeBundle:Default:table, table_alias: '' }
+dmd_coffee_table_order_create:
+    path:  /coffee/createorder/{table_alias}
+    defaults: { _controller: DMDCoffeeBundle:Default:createOrder, table_alias: '' }
+dmd_coffee_table_orderdetail_add:
+    path:  /coffee/addorderdetail
+    defaults: { _controller: DMDCoffeeBundle:Default:addOrderDetail }
+dmd_coffee_table_order_save:
+    path:  /coffee/saveorder
+    defaults: { _controller: DMDCoffeeBundle:Default:saveOrder }
+dmd_coffee_table_orderdetail_remove:
+    path:  /coffee/removeorderdetail
+    defaults: { _controller: DMDCoffeeBundle:Default:removeOrderDetail }
+dmd_coffee_table_orderdescription_add:
+    path:  /coffee/addorderdescription
+    defaults: { _controller: DMDCoffeeBundle:Default:addOrderDescription }
+dmd_coffee_table_orderdescription_save:
+    path:  /coffee/saveorderdescription
+    defaults: { _controller: DMDCoffeeBundle:Default:saveOrderDescription }
+dmd_coffee_table_orderprinted_save:
+    path:  /coffee/saveorderprinted
+    defaults: { _controller: DMDCoffeeBundle:Default:saveOrderPrinted }
+dmd_coffee_table_change:
+    path:  /coffee/tablechange
+    defaults: { _controller: DMDCoffeeBundle:Default:changeTable }
+dmd_coffee_table_merge:
+    path:  /coffee/tablemerge
+    defaults: { _controller: DMDCoffeeBundle:Default:mergeTable }
